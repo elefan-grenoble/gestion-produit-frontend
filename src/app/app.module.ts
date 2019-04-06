@@ -5,8 +5,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
 import {HttpClientModule} from '@angular/common/http';
-import { ArticlesComponent } from './components/articles/articles.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {ArticlesComponent} from './components/articles/articles.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule, MatTableModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import {registerLocaleData} from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
@@ -18,7 +25,11 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
