@@ -1,0 +1,90 @@
+#header-section {
+
+  display: flex;
+
+  border-bottom: 4px;
+  border-bottom-color: #51cae9;
+  border-bottom-style: solid;
+
+  width: 100%;
+
+  padding-left: 40px;
+  padding-right: 40px;
+
+  #site-logo-container {
+
+    padding-top: 15px;
+    width: 15%;
+
+    .site-logo {
+
+      color: #222222;
+      display: table;
+      text-align: left;
+      margin: 0;
+      text-transform: uppercase;
+      position: relative;
+      width: 350px;
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        max-height: 60px;
+        vertical-align: bottom;
+      }
+
+    }
+  }
+
+  #navigation {
+
+    align-self: flex-end;
+    width: 85%;
+
+    padding: 23px 0 23px 0;
+
+    ul {
+
+      list-style: none;
+      margin: 0;
+      padding-right: 100px;
+
+      display: flex;
+      justify-content: flex-end;
+
+      li {
+
+        a:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          color: #222222;
+          left: 9px;
+        }
+
+        a {
+          font-family: "Raleway Semi-Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          white-space: nowrap;
+          padding-left: 15px;
+          color: #555555;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-size: 13px;
+          position: relative;
+          text-decoration: none;
+          display: block;
+        }
+
+        .active {
+          color: #51CAE9;
+        }
+      }
+
+    }
+  }
+
+
+}
+

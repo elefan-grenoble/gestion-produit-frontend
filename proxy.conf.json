@@ -1,6 +1,8 @@
 {
   "/api": {
-    "target": "http://dc1-mcht-dev-srv-02.dev.dc1.kelkoo.net:9001",
-    "secure": false
+    "target": "http://produits.lelefan.org",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }
