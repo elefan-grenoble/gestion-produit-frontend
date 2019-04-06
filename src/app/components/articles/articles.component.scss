@@ -1,0 +1,21 @@
+.articles-container {
+
+  display: flex;
+  justify-content: center;
+
+  .articles-content {
+    width: 80%;
+
+    .search-bar {
+      width: 100%;
+    }
+
+    .mat-table {
+      width: 100%;
+    }
+
+  }
+
+
+
+}

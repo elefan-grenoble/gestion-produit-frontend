@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
-import {MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {LoadingService} from '../../services/loading.service';
 
 @Component({
@@ -12,18 +12,28 @@ import {LoadingService} from '../../services/loading.service';
 export class ArticlesComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['code', 'famille', 'designation', 'fournisseur', 'prix_vente'];
+  displayedColumns: string[] = ['designation', 'famille', 'fournisseur', 'prix_vente'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   dataSource: MatTableDataSource<Article>;
 
+
   constructor(private articleService: ArticlesService,
-              private loadingService: LoadingService) { }
+              private loadingService: LoadingService) {
+  }
 
   ngOnInit() {
     this.loadingService.taskStarted();
     this.articleService.getArticles().subscribe(
       (articles: Article[]) => {
         this.dataSource = new MatTableDataSource(articles);
+        this.dataSource.paginator = this.paginator;
+        if (this.dataSource.paginator) {
+          this.dataSource.paginator.firstPage();
+        } else {
+          console.log("FUCK!!");
+        }
         this.loadingService.taskFinished();
       },
       err => {
@@ -35,6 +45,9 @@ export class ArticlesComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }
