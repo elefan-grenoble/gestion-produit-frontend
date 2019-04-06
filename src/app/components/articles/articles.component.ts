@@ -11,12 +11,12 @@ export class ArticlesComponent implements OnInit {
 
   constructor(private articleService: ArticlesService) { }
 
-  article: Article;
+  articles: Article[];
 
   ngOnInit() {
-    this.articleService.getArticle(1).subscribe(
-      (article: Article) => {
-        this.article = article;
+    this.articleService.getArticles().subscribe(
+      (articles: Article[]) => {
+        this.articles = articles;
       }
     )
   }
