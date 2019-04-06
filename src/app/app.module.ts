@@ -8,7 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ArticlesComponent} from './components/articles/articles.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatInputModule, MatTableModule} from '@angular/material';
+import {MatInputModule, MatProgressBarModule, MatTableModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -29,7 +29,8 @@ registerLocaleData(localeFr);
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
