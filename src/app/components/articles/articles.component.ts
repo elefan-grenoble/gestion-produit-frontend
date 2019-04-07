@@ -29,11 +29,7 @@ export class ArticlesComponent implements OnInit {
       (articles: Article[]) => {
         this.dataSource = new MatTableDataSource(articles);
         this.dataSource.paginator = this.paginator;
-        if (this.dataSource.paginator) {
-          this.dataSource.paginator.firstPage();
-        } else {
-          console.log("FUCK!!");
-        }
+        this.dataSource.paginator.firstPage();
         this.loadingService.taskFinished();
       },
       err => {
