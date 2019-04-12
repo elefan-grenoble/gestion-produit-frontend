@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://produits.lelefan.org",
+    "target": "https://produits.lelefan.org",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
