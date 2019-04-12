@@ -13,11 +13,6 @@
         <td mat-cell *matCellDef="let article"> {{article.designation}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="famille">
-        <th mat-header-cell *matHeaderCellDef> Famille</th>
-        <td mat-cell *matCellDef="let article"> {{article.famille.nom}} </td>
-      </ng-container>
-
       <ng-container matColumnDef="fournisseur">
         <th mat-header-cell *matHeaderCellDef> Fournisseur</th>
         <td mat-cell *matCellDef="let article"> {{article.fournisseur.nom}} </td>
@@ -28,6 +23,12 @@
         <th mat-header-cell *matHeaderCellDef> Prix</th>
         <td mat-cell *matCellDef="let article"> {{article.prix_vente | currency : 'EUR' : 'symbol' : '1.2' : 'fr' }} </td>
       </ng-container>
+
+      <ng-container matColumnDef="stocks">
+        <th mat-header-cell *matHeaderCellDef> Stocks</th>
+        <td mat-cell *matCellDef="let article"> {{article.stocks?.qte_stocks}} </td>
+      </ng-container>
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

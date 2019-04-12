@@ -12,7 +12,7 @@ import {LoadingService} from '../../services/loading.service';
 export class ArticlesComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['designation', 'famille', 'fournisseur', 'prix_vente'];
+  displayedColumns: string[] = ['designation', 'fournisseur', 'prix_vente', 'stocks'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
