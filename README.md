@@ -1,27 +1,37 @@
-# GestionProduitFrontend
+# Gestion Produit Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
+Ce projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
-## Development server
+## Serveur de développement (en local)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Lancer la commande `ng serve --proxy-config proxy.conf.json` pour lancer le serveur de développement en local. 
+Ensuite naviguer vers `http://localhost:4200/`. L'application se rechargera automatiquement si les fichiers sources sont modifiés.
 
-## Code scaffolding
+## Génération de code
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Pour générer un composant lancer `ng generate component components/component-name`. 
+Tu peux aussi utiliser `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Tests unitaires
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Lancer `ng test` pour executer les tests avec [Karma](https://karma-runner.github.io).
 
-## Running unit tests
+## Mise en production
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Création d'une release
 
-## Running end-to-end tests
+* Merger les développements dans la branche `develop` via une pull request.
+* Dans la branche `develop` lancer `ng build --prod` pour compiler le projet pour la prod. La destination des artefacts du build est le dossier `dist/`.
+* Créer un tag `git tag -a v1.4` avec la version correspondante.
+* Pousser tous les changements.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Deploiement de la release en production
 
-## Further help
+TODO
+ 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Plus d'aide
+
+Pour obtenir plus d'aide sur Angular CLI lancer `ng help` ou aller voir le [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
