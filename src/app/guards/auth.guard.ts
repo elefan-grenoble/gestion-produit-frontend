@@ -14,14 +14,18 @@ export interface UserStatus {
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
   }
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.http.get<UserStatus>('/api/user/status').pipe(map(
       (userStatus: UserStatus) => {
-        if (userStatus.logged) return true;
-        else return this.router.parseUrl(userStatus.oauth_url) ;
+        if (userStatus.logged) {
+          return true;
+        } else {
+          location.href = userStatus.oauth_url;
+          return false;
+        }
       }
     ));
   }
