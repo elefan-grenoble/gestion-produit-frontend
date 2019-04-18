@@ -1,6 +1,8 @@
 import {Famille} from './famille';
 import {Fournisseur} from './fournisseur';
 import {Stocks} from './stocks';
+import {Emplacement} from './emplacement';
+import {Rayon} from './rayon';
 
 export interface Article {
   code: number;
@@ -23,6 +25,8 @@ export interface Article {
   anc_prix_vente_ht: number;
   famille: Famille;
   fournisseur: Fournisseur;
+  emplacement?: Emplacement;
+  rayon?: Rayon;
   stocks?: Stocks;
 }
 
