@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
@@ -14,7 +14,7 @@ export interface UserStatus {
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
@@ -23,7 +23,9 @@ export class AuthGuard implements CanActivate {
         if (userStatus.logged) {
           return true;
         } else {
-          location.href = userStatus.oauth_url;
+          const url = this.router.parseUrl(userStatus.oauth_url);
+          url.queryParams['return_to'] = location.origin + state.url;
+          location.href = this.router.serializeUrl(url);
           return false;
         }
       }
