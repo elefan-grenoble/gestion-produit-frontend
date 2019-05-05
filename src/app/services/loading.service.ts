@@ -19,6 +19,7 @@ export class LoadingService {
 
   taskFinished() {
     this.loads -= 1;
+    if (this.loads < 0) this.loads = 0;
     this.emitSubject();
   }
 

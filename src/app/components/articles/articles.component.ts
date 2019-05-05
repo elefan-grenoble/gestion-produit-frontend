@@ -3,6 +3,8 @@ import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {LoadingService} from '../../services/loading.service';
+import {interval} from 'rxjs';
+import {map, startWith, switchMap} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-articles',
@@ -24,19 +26,23 @@ export class ArticlesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadingService.taskStarted();
-    this.articleService.getArticles().subscribe(
-      (articles: Article[]) => {
-        this.dataSource = new MatTableDataSource(articles);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.paginator.firstPage();
-        this.loadingService.taskFinished();
-      },
-      err => {
-        console.error(err);
-        this.loadingService.taskFinished();
-      }
-    )
+    interval(2 * 3600 * 1000)
+      .pipe(
+        startWith(0),
+        map(() => this.loadingService.taskStarted()),
+        switchMap(() => this.articleService.getArticles())
+      )
+      .subscribe(
+        (articles: Article[]) => {
+          this.dataSource = new MatTableDataSource(articles);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.paginator.firstPage();
+          this.loadingService.taskFinished();
+        },
+        err => {
+          console.error(err);
+          this.loadingService.taskFinished();
+        });
   }
 
   applyFilter(filterValue: string) {
