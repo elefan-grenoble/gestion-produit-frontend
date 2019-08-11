@@ -39,16 +39,15 @@
     align-self: flex-end;
     width: 85%;
 
-    padding: 23px 0 23px 0;
+    padding: 23px 230px 23px 0;
+    display: flex;
+    justify-content: flex-end;
 
     ul {
 
       list-style: none;
       margin: 0;
-      padding-right: 100px;
-
-      display: flex;
-      justify-content: flex-end;
+      padding: 0 20px 0 20px;
 
       li {
 
@@ -63,7 +62,7 @@
         a {
           font-family: "Raleway Semi-Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
           white-space: nowrap;
-          padding-left: 15px;
+          padding-left: 5px;
           color: #555555;
           text-transform: uppercase;
           letter-spacing: 1px;

@@ -3,10 +3,16 @@ import {RouterModule, Routes} from '@angular/router';
 import {ArticlesComponent} from './components/articles/articles.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {AuthGuard} from './guards/auth.guard';
+import {SupplyingComponent} from "./components/supplying/supplying.component";
 
 const routes: Routes = [
-  {path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard]},
-  {path: '', redirectTo: '/articles', pathMatch: 'full'},
+  {
+    path: '', canActivate: [AuthGuard], children: [
+      {path: '', redirectTo: '/articles', pathMatch: 'full'},
+      {path: 'articles', component: ArticlesComponent},
+      {path: 'supplying', component: SupplyingComponent}
+    ]
+  },
   {path: '**', component: PageNotFoundComponent}
 ];
 

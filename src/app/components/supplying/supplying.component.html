@@ -1,0 +1,30 @@
+<h1>Produits à réapprovisionner</h1>
+<table mat-table *ngIf="supplyingList" [dataSource]="supplyingList" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="designation">
+    <th mat-header-cell *matHeaderCellDef> Désignation - Fournisseur</th>
+    <td mat-cell *matCellDef="let supply"> {{supply.article.designation}}
+      - {{supply.article.fournisseur.nom}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="emplacement">
+    <th mat-header-cell *matHeaderCellDef> Emplacement stock</th>
+    <td mat-cell *matCellDef="let supply"> {{supply.article.emplacement?.libelle}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rayon">
+    <th mat-header-cell *matHeaderCellDef> Rayon</th>
+    <td mat-cell *matCellDef="let supply"> {{supply.article.rayon?.libelle}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions</th>
+    <td mat-cell *matCellDef="let supply">
+      <a mat-raised-button>Répprovisionné</a>
+      <a mat-raised-button>Non trouvé</a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -12,7 +12,7 @@ import {LoadingService} from '../../services/loading.service';
 export class ArticlesComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['designation', 'prix_vente', 'emplacement', 'rayon', 'stocks'];
+  displayedColumns: string[] = ['designation', 'prix_vente', 'actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -44,6 +44,10 @@ export class ArticlesComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  addToReappro(article: Article) {
+    console.log(article);
   }
 
 }

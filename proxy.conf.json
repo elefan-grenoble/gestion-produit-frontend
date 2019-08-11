@@ -1,7 +1,10 @@
 {
   "/api": {
-    "target": "https://produits.lelefan.org",
+    "target": "http://produits.lelefan.local:8000",
     "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
     "changeOrigin": true,
     "logLevel": "debug"
   }
