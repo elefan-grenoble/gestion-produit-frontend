@@ -9,16 +9,17 @@ import {ArticlesComponent} from './components/articles/articles.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule,
+  MatButtonModule, MatDialogModule, MatIconModule,
   MatInputModule,
   MatPaginatorModule,
-  MatProgressBarModule,
-  MatTableModule
+  MatProgressBarModule, MatSnackBarModule,
+  MatTableModule, MatTooltipModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
-import {registerLocaleData} from '@angular/common';
+import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {SupplyingComponent} from "./components/supplying/supplying.component";
+import { AddSupplyingDialogComponent } from './components/add-supplying-dialog/add-supplying-dialog.component';
 
 registerLocaleData(localeFr);
 
@@ -28,7 +29,8 @@ registerLocaleData(localeFr);
     HeaderComponent,
     ArticlesComponent,
     PageNotFoundComponent,
-    SupplyingComponent
+    SupplyingComponent,
+    AddSupplyingDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +42,17 @@ registerLocaleData(localeFr);
     MatTableModule,
     MatProgressBarModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DatePipe],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddSupplyingDialogComponent
+  ]
 })
 export class AppModule {
 }

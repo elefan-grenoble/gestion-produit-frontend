@@ -1,8 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatTableDataSource} from '@angular/material';
 import {LoadingService} from '../../services/loading.service';
+import {AddSupplyingDialogComponent} from "../add-supplying-dialog/add-supplying-dialog.component";
+import {SupplyingService} from "../../services/supplying.service";
+import {Supplying} from "../../models/supplying";
 
 @Component({
   selector: 'app-articles',
@@ -12,15 +15,17 @@ import {LoadingService} from '../../services/loading.service';
 export class ArticlesComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['designation', 'prix_vente', 'actions'];
+  displayedColumns: string[] = ['designation', 'famille', 'prix_vente', 'actions'];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   dataSource: MatTableDataSource<Article>;
 
 
   constructor(private articleService: ArticlesService,
-              private loadingService: LoadingService) {
+              private loadingService: LoadingService,
+              private supplyingService: SupplyingService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -46,8 +51,21 @@ export class ArticlesComponent implements OnInit {
     }
   }
 
-  addToReappro(article: Article) {
-    console.log(article);
+  addToSupplying(article: Article) {
+    const dialogRef = this.dialog.open(AddSupplyingDialogComponent, {
+      width: '800px',
+      data: {article: article}
+    });
+
+    dialogRef.afterClosed().subscribe((quantity: number | null) => {
+      if (quantity) {
+        this.supplyingService.addToSupplyingList(article.code, quantity).subscribe(
+          (supplying: Supplying) => {
+            console.log(supplying);
+          }
+        );
+      }
+    });
   }
 
 }
