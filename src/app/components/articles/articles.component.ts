@@ -53,7 +53,7 @@ export class ArticlesComponent implements OnInit {
 
   addToSupplying(article: Article) {
     const dialogRef = this.dialog.open(AddSupplyingDialogComponent, {
-      width: '800px',
+      width: '700px',
       data: {article: article}
     });
 
