@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
-import {MatDialog, MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
 import {LoadingService} from '../../services/loading.service';
 import {AddSupplyingDialogComponent} from "../add-supplying-dialog/add-supplying-dialog.component";
 import {SupplyingService} from "../../services/supplying.service";
 import {Supplying} from "../../models/supplying";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-articles',
@@ -25,7 +26,8 @@ export class ArticlesComponent implements OnInit {
   constructor(private articleService: ArticlesService,
               private loadingService: LoadingService,
               private supplyingService: SupplyingService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -51,21 +53,51 @@ export class ArticlesComponent implements OnInit {
     }
   }
 
-  addToSupplying(article: Article) {
+  openSupplyingDialog(article: Article) {
+    this.loadingService.taskStarted();
+    this.supplyingService.getSupplyingList().subscribe(
+      (supplyings: Supplying[]) => {
+        const currentSupplying = supplyings.find(s => s.article.code == article.code);
+        this.loadingService.taskFinished();
+        this.openAddOrUpdateSupplyingDialog(article, currentSupplying);
+      },
+      err => {
+        console.log();
+        this.loadingService.taskFinished();
+      }
+    );
+  }
+
+  private openAddOrUpdateSupplyingDialog(article: Article, supplying?: Supplying) {
     const dialogRef = this.dialog.open(AddSupplyingDialogComponent, {
       width: '700px',
-      data: {article: article}
+      data: {article: article, currentSupplying: supplying}
     });
-
     dialogRef.afterClosed().subscribe((quantity: number | null) => {
-      if (quantity) {
-        this.supplyingService.addToSupplyingList(article.code, quantity).subscribe(
-          (supplying: Supplying) => {
-            console.log(supplying);
-          }
-        );
+      if (quantity && !supplying) this.addToSupplying(article, quantity);
+      else if (quantity && supplying) {
+        supplying.quantity = quantity;
+        this.updateSupplying(supplying);
       }
     });
+  }
+
+  private addToSupplying(article: Article, quantity: number) {
+    this.supplyingService.addToSupplyingList(article.code, quantity).subscribe((supplying: Supplying) => {
+        this.snackBar.open('Article ajouté au réapprovisionnement', "ok", {
+          duration: 5000,
+        });
+      }
+    );
+  }
+
+  private updateSupplying(supplying: Supplying) {
+    this.supplyingService.updateSupplying(supplying).subscribe(_ => {
+        this.snackBar.open('Quantité à réapprovisionner mise à jour', "ok", {
+          duration: 5000,
+        });
+      }
+    );
   }
 
 }

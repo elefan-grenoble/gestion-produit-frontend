@@ -29,7 +29,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Actions</th>
     <td mat-cell *matCellDef="let article">
-      <button mat-icon-button color="primary" (click)="addToSupplying(article)"
+      <button mat-icon-button color="primary" (click)="openSupplyingDialog(article)"
               matTooltip="Ajouter à la liste de réapprovisionnement"
               aria-label="Bouton pour ajouter l'article à la liste de réapprovisionnement">
         <mat-icon>add_shopping_cart</mat-icon>
