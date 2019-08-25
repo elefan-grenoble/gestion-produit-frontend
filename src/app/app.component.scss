@@ -1,3 +1,11 @@
-.content {
-  padding: 10px 15px 0 15px;
+.content-container {
+
+  display: flex;
+  justify-content: center;
+
+  .content {
+    padding: 10px 15px 0 15px;
+    width: 80%;
+  }
+
 }

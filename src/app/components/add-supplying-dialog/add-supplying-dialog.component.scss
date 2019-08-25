@@ -1,0 +1,90 @@
+.supplying-exists {
+  color: red;
+}
+
+.article {
+
+  margin-top: 15px;
+
+  .designation {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+
+  .fournisseur {
+    text-transform: capitalize;
+    font-size: 19px;
+  }
+
+  .famille {
+    text-transform: capitalize;
+    font-style: italic;
+  }
+
+}
+
+.quantity-choices {
+  display: flex;
+  margin-bottom: 20px;
+  max-width: 500px;
+  height: 55px;
+
+  $border-color: #27ABD9;
+
+  .quantity-choice {
+    flex-grow: 1;
+    height: 100%;
+    cursor: pointer;
+    background-color: #EAF9FC;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+
+    .quantity-choice-value {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      font-size: 18px;
+      line-height: 50px;
+      color: #27ABD9;
+    }
+  }
+
+  $border-radius: 6px;
+
+  .quantity-choice:first-child {
+    border-bottom-left-radius: $border-radius;
+    border-top-left-radius: $border-radius;
+  }
+
+  .quantity-choice:last-child {
+    border-right: 1px solid $border-color;
+    border-bottom-right-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+
+  .quantity-choice:hover {
+    background-color: #85DAF0;
+
+    .quantity-choice-value {
+      color: white;
+    }
+  }
+
+  .quantity-selected, .quantity-selected:hover {
+    cursor: auto;
+    background-color: #4AC5E6;
+
+    .quantity-choice-value {
+      color: white;
+    }
+  }
+
+}
+
+.mat-dialog-actions {
+  float: right;
+}

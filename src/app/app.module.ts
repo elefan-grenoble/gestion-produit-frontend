@@ -8,10 +8,18 @@ import {HttpClientModule} from '@angular/common/http';
 import {ArticlesComponent} from './components/articles/articles.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatInputModule, MatPaginatorModule, MatProgressBarModule, MatTableModule} from '@angular/material';
+import {
+  MatButtonModule, MatDialogModule, MatIconModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatProgressBarModule, MatSnackBarModule,
+  MatTableModule, MatTooltipModule
+} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
-import {registerLocaleData} from '@angular/common';
+import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import {SupplyingComponent} from "./components/supplying/supplying.component";
+import { AddSupplyingDialogComponent } from './components/add-supplying-dialog/add-supplying-dialog.component';
 
 registerLocaleData(localeFr);
 
@@ -20,7 +28,9 @@ registerLocaleData(localeFr);
     AppComponent,
     HeaderComponent,
     ArticlesComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SupplyingComponent,
+    AddSupplyingDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +41,18 @@ registerLocaleData(localeFr);
     MatInputModule,
     MatTableModule,
     MatProgressBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DatePipe],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddSupplyingDialogComponent
+  ]
 })
 export class AppModule {
 }

@@ -1,0 +1,40 @@
+<h1>Produits à réapprovisionner</h1>
+<table mat-table *ngIf="supplyingList" [dataSource]="supplyingList" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="designation">
+    <th mat-header-cell *matHeaderCellDef> Désignation - Fournisseur</th>
+    <td mat-cell *matCellDef="let supply">
+      <span>{{supply.article.designation}}</span><br><span class="fournisseur">{{supply.article.fournisseur.nom.toLowerCase()}}</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="emplacement">
+    <th mat-header-cell *matHeaderCellDef> Emplacement stock</th>
+    <td mat-cell *matCellDef="let supply"> {{supply.article.emplacement?.libelle}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantité</th>
+    <td mat-cell *matCellDef="let supply"> {{supply.quantity}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions</th>
+    <td mat-cell *matCellDef="let supply">
+      <button mat-icon-button color="primary" (click)="supplied(supply)"
+              matTooltip="Produit réapprovisionné"
+              aria-label="Bouton pour indiquer que le produit a été réapprovisionné">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" (click)="notSupplied(supply)"
+              matTooltip="Produit non trouvé en stock"
+              aria-label="Bouton pour indiquer que le produit n'a pas été trouvé en stock">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

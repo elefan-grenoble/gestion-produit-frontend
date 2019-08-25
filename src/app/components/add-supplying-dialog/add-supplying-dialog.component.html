@@ -1,0 +1,28 @@
+<h2
+  [innerText]="currentSupplying ? 'Modifier la quantité à réapprovisionner' : 'Ajouter l\'article au réapprovisionnement'"></h2>
+<div mat-dialog-content>
+
+  <div *ngIf="currentSupplying" class="supplying-exists">Cet article est déjà présent dans la liste des produits réapprovisionner, tu peux
+    cependant modifier la quantité nécessaire.</div>
+
+  <div class="article">
+    <div class="designation">{{article.designation}}</div>
+    <div class="fournisseur">{{article.fournisseur.nom.toLowerCase()}}</div>
+    <div class="famille">{{article.famille.nom.toLowerCase()}}</div>
+    <div class="prix">{{article.prix_vente}}€</div>
+  </div>
+
+  <h3>Quantité à réapprovisionner</h3>
+
+  <div class="quantity-choices">
+    <div class="quantity-choice" *ngFor="let number of [1,2,3,4,5,6,7,8]"
+         [class.quantity-selected]="quantity == number" (click)="quantity = number">
+      <div class="quantity-choice-value">{{number}}</div>
+    </div>
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="accent" (click)="cancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="submit()">Ajouter</button>
+</div>
