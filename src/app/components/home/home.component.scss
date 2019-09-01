@@ -1,0 +1,71 @@
+$main-color: #40BDE3;
+$hover-color: #27ABD9;
+
+.home-container {
+  text-align: center;
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .menu-item-container {
+
+      margin-top: 20px;
+
+      .menu-item {
+        margin: auto;
+        cursor: pointer;
+        color: $main-color;
+        max-width: 200px;
+        border: $main-color 1px solid;
+        border-radius: 12px;
+
+        .menu-item-title {
+          padding: 15px 20px 30px 20px;
+        }
+
+        .menu-item-icon-container {
+
+          background-color: $main-color;
+          border: $main-color 1px solid;
+          border-bottom-right-radius: 10px;
+          border-bottom-left-radius: 10px;
+
+          .menu-item-icon {
+            position: relative;
+            top: -25px;
+            margin: auto;
+            background-color: white;
+            border: $main-color 1px solid;
+            border-radius: 25px;
+
+            width: 45px;
+            height: 45px;
+
+            .mat-icon {
+              margin-top: 10px;
+              font-size: 25px;
+            }
+
+          }
+        }
+
+      }
+
+      .menu-item:hover {
+        color: $hover-color;
+        border-color: $hover-color;
+
+        .menu-item-icon-container {
+          background-color: $hover-color;
+          border: $hover-color 1px solid;
+        }
+
+      }
+
+    }
+
+  }
+
+}
