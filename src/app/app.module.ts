@@ -20,6 +20,7 @@ import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {SupplyingComponent} from "./components/supplying/supplying.component";
 import { AddSupplyingDialogComponent } from './components/add-supplying-dialog/add-supplying-dialog.component';
+import { HomeComponent } from './components/home/home.component';
 
 registerLocaleData(localeFr);
 
@@ -30,7 +31,8 @@ registerLocaleData(localeFr);
     ArticlesComponent,
     PageNotFoundComponent,
     SupplyingComponent,
-    AddSupplyingDialogComponent
+    AddSupplyingDialogComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
