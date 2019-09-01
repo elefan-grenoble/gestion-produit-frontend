@@ -10,8 +10,8 @@ const routes: Routes = [
   {
     path: '', canActivate: [AuthGuard], children: [
       {path: '', component: HomeComponent},
-      {path: 'articles', component: ArticlesComponent},
-      {path: 'supplying', component: SupplyingComponent}
+      {path: 'supplying', component: SupplyingComponent},
+      {path: 'add-supplying', component: ArticlesComponent}
     ]
   },
   {path: '**', component: PageNotFoundComponent}

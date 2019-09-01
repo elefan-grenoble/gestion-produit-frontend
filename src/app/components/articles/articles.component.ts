@@ -21,7 +21,11 @@ export class ArticlesComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   dataSource: MatTableDataSource<Article>;
-
+  private filterPredicate = (article: Article, filter: string) => {
+    return article.designation.toLowerCase().indexOf(filter) != -1 ||
+      article.fournisseur.nom.toLowerCase().indexOf(filter) != -1 ||
+      article.code.toString() === filter;
+  };
 
   constructor(private articleService: ArticlesService,
               private loadingService: LoadingService,
@@ -37,6 +41,7 @@ export class ArticlesComponent implements OnInit {
         this.dataSource = new MatTableDataSource(articles);
         this.dataSource.paginator = this.paginator;
         this.dataSource.paginator.firstPage();
+        this.dataSource.filterPredicate = this.filterPredicate;
         this.loadingService.taskFinished();
       },
       err => {
@@ -45,6 +50,7 @@ export class ArticlesComponent implements OnInit {
       }
     )
   }
+
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();

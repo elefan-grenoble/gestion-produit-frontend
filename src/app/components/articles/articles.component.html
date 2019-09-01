@@ -1,7 +1,14 @@
-<h2>Rechercher un produit</h2>
+<h2>Ajouter des articles à réapprovisionner</h2>
+
+<div id="actions">
+  <a mat-raised-button color="primary" routerLink="/supplying">
+    <mat-icon>list</mat-icon>
+    <span> Liste de réapprovisionnement</span>
+  </a>
+</div>
 
 <mat-form-field class="search-bar">
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un produit">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche (code barre, désignation ou fournisseur)">
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

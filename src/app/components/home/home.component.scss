@@ -18,11 +18,12 @@ $hover-color: #27ABD9;
         cursor: pointer;
         color: $main-color;
         max-width: 200px;
-        border: $main-color 1px solid;
-        border-radius: 12px;
+        border: $main-color 2px solid;
+        border-radius: 14px;
 
         .menu-item-title {
           padding: 15px 20px 30px 20px;
+          font-weight: 500;
         }
 
         .menu-item-icon-container {
@@ -37,7 +38,7 @@ $hover-color: #27ABD9;
             top: -25px;
             margin: auto;
             background-color: white;
-            border: $main-color 1px solid;
+            border: $main-color 2px solid;
             border-radius: 25px;
 
             width: 45px;

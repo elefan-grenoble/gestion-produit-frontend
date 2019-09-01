@@ -27,13 +27,18 @@ export class SupplyingComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = timer(0, 10000).pipe(
       switchMap(_ => this.supplyingService.getSupplyingList())).subscribe(
-      (supplyingList: Supplying[]) => this.supplyingList = supplyingList
+      (supplyingList: Supplying[]) => this.setSupplyingList(supplyingList)
     );
+  }
+
+  private setSupplyingList(newSupplyingList: Supplying[]) {
+    this.supplyingList =
+      newSupplyingList.sort((a, b) => a.article.emplacement.libelle.localeCompare(b.article.emplacement.libelle));
   }
 
   private reload() {
     this.supplyingService.getSupplyingList().subscribe(
-      (supplyingList: Supplying[]) => this.supplyingList = supplyingList
+      (supplyingList: Supplying[]) => this.setSupplyingList(supplyingList)
     );
   }
 
