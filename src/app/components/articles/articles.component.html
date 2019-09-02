@@ -8,7 +8,7 @@
 </div>
 
 <mat-form-field class="search-bar">
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche (code barre, désignation ou fournisseur)">
+  <input matInput #searchInput="matInput" (keyup)="applyFilter($event.target.value)" placeholder="Recherche (code barre, désignation ou fournisseur)">
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

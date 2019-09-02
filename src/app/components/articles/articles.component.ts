@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
-import {MatDialog, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatInput, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
 import {LoadingService} from '../../services/loading.service';
 import {AddSupplyingDialogComponent} from "../add-supplying-dialog/add-supplying-dialog.component";
 import {SupplyingService} from "../../services/supplying.service";
@@ -13,11 +13,12 @@ import {DatePipe} from "@angular/common";
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit, AfterViewInit {
 
 
   displayedColumns: string[] = ['designation', 'famille', 'prix_vente', 'actions'];
 
+  @ViewChild('searchInput', {static: true}) searchInput: MatInput;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   dataSource: MatTableDataSource<Article>;
@@ -35,6 +36,7 @@ export class ArticlesComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.loadingService.taskStarted();
     this.articleService.getArticles().subscribe(
       (articles: Article[]) => {
@@ -51,6 +53,9 @@ export class ArticlesComponent implements OnInit {
     )
   }
 
+  ngAfterViewInit(): void {
+    this.searchInput.focus();
+  }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
