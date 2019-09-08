@@ -1,21 +1,21 @@
-#actions {
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
+.articles {
 
-.search-bar {
-  width: 100%;
-}
+  margin-top: 25px;
 
-.mat-table {
-  width: 100%;
-}
+  .search-bar {
+    width: 100%;
+  }
 
-.fournisseur {
-  text-transform: capitalize;
-  font-style: italic;
-}
+  .mat-table {
+    width: 100%;
+  }
 
-.famille {
-  text-transform: capitalize;
+  .fournisseur {
+    text-transform: capitalize;
+    font-style: italic;
+  }
+
+  .famille {
+    text-transform: capitalize;
+  }
 }

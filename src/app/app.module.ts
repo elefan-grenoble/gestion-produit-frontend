@@ -21,6 +21,8 @@ import localeFr from '@angular/common/locales/fr';
 import {SupplyingComponent} from "./components/supplying/supplying.component";
 import { AddSupplyingDialogComponent } from './components/add-supplying-dialog/add-supplying-dialog.component';
 import { HomeComponent } from './components/home/home.component';
+import { AddSupplyingButtonComponent } from './components/add-supplying-button/add-supplying-button.component';
+import { AddSupplyingArticlesComponent } from './components/add-supplying-articles/add-supplying-articles.component';
 
 registerLocaleData(localeFr);
 
@@ -32,7 +34,9 @@ registerLocaleData(localeFr);
     PageNotFoundComponent,
     SupplyingComponent,
     AddSupplyingDialogComponent,
-    HomeComponent
+    HomeComponent,
+    AddSupplyingButtonComponent,
+    AddSupplyingArticlesComponent
   ],
   imports: [
     BrowserModule,

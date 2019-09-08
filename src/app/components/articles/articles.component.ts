@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
 import {MatDialog, MatInput, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
@@ -15,13 +15,17 @@ import {DatePipe} from "@angular/common";
 })
 export class ArticlesComponent implements OnInit, AfterViewInit {
 
-
   displayedColumns: string[] = ['designation', 'famille', 'prix_vente', 'actions'];
+
+  actionColumnTitle: string = 'Actions';
+
+  @Input() feature: string;
 
   @ViewChild('searchInput', {static: true}) searchInput: MatInput;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   dataSource: MatTableDataSource<Article>;
+
   private filterPredicate = (article: Article, filter: string) => {
     return article.designation.toLowerCase().indexOf(filter) != -1 ||
       article.fournisseur.nom.toLowerCase().indexOf(filter) != -1 ||
@@ -29,14 +33,21 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   };
 
   constructor(private articleService: ArticlesService,
-              private loadingService: LoadingService,
-              private supplyingService: SupplyingService,
-              public dialog: MatDialog,
-              private snackBar: MatSnackBar) {
+              private loadingService: LoadingService) {
   }
 
   ngOnInit() {
+    this.loadArticles();
+    if (this.feature === 'supplying') {
+      this.actionColumnTitle = "Ajouter";
 
+    } else {
+      this.displayedColumns = ['designation', 'famille', 'prix_vente'];
+      console.error("Unknown feature : " + this.feature);
+    }
+  }
+
+  private loadArticles() {
     this.loadingService.taskStarted();
     this.articleService.getArticles().subscribe(
       (articles: Article[]) => {
@@ -62,53 +73,6 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  openSupplyingDialog(article: Article) {
-    this.loadingService.taskStarted();
-    this.supplyingService.getSupplyingList().subscribe(
-      (supplyings: Supplying[]) => {
-        const currentSupplying = supplyings.find(s => s.article.code == article.code);
-        this.loadingService.taskFinished();
-        this.openAddOrUpdateSupplyingDialog(article, currentSupplying);
-      },
-      err => {
-        console.log();
-        this.loadingService.taskFinished();
-      }
-    );
-  }
-
-  private openAddOrUpdateSupplyingDialog(article: Article, supplying?: Supplying) {
-    const dialogRef = this.dialog.open(AddSupplyingDialogComponent, {
-      width: '700px',
-      data: {article: article, currentSupplying: supplying}
-    });
-    dialogRef.afterClosed().subscribe((quantity: number | null) => {
-      if (quantity && !supplying) this.addToSupplying(article, quantity);
-      else if (quantity && supplying) {
-        supplying.quantity = quantity;
-        this.updateSupplying(supplying);
-      }
-    });
-  }
-
-  private addToSupplying(article: Article, quantity: number) {
-    this.supplyingService.addToSupplyingList(article.code, quantity).subscribe((supplying: Supplying) => {
-        this.snackBar.open('Article ajouté au réapprovisionnement', "ok", {
-          duration: 5000,
-        });
-      }
-    );
-  }
-
-  private updateSupplying(supplying: Supplying) {
-    this.supplyingService.updateSupplying(supplying).subscribe(_ => {
-        this.snackBar.open('Quantité à réapprovisionner mise à jour', "ok", {
-          duration: 5000,
-        });
-      }
-    );
   }
 
 }
