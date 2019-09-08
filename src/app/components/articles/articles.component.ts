@@ -15,7 +15,7 @@ import {DatePipe} from "@angular/common";
 })
 export class ArticlesComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['designation', 'famille', 'prix_vente', 'actions'];
+  displayedColumns: string[] = ['designation', 'famille', 'prix_vente'];
 
   actionColumnTitle: string = 'Actions';
 
@@ -38,12 +38,24 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loadArticles();
-    if (this.feature === 'supplying') {
-      this.actionColumnTitle = "Ajouter";
-
-    } else {
-      this.displayedColumns = ['designation', 'famille', 'prix_vente'];
-      console.error("Unknown feature : " + this.feature);
+    switch (this.feature) {
+      case 'supplying': {
+        this.actionColumnTitle = "Ajouter";
+        this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
+        break;
+      }
+      case 'delivery': {
+        this.displayedColumns = ['designation', 'emplacement', 'rayon'];
+        break;
+      }
+      case 'barcodes': {
+        this.actionColumnTitle = "Ajouter un code barre";
+        this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
+        break;
+      }
+      default: {
+        console.error("Unknown feature : " + this.feature);
+      }
     }
   }
 
@@ -73,6 +85,12 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  resetFilter() {
+    this.searchInput.value = '';
+    this.applyFilter('');
+    this.searchInput.focus();
   }
 
 }

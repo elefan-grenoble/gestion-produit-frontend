@@ -3,7 +3,13 @@
   margin-top: 25px;
 
   .search-bar {
-    width: 100%;
+    .mat-form-field {
+      width: 80%;
+      max-width: 400px;
+    }
+    button {
+      margin-left: 10px;
+    }
   }
 
   .mat-table {

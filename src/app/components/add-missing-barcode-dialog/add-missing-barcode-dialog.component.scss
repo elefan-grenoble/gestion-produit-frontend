@@ -1,0 +1,25 @@
+.article {
+
+  margin: 15px 0;
+
+  .designation {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+
+  .fournisseur {
+    text-transform: capitalize;
+    font-size: 19px;
+  }
+
+  .famille {
+    text-transform: capitalize;
+    font-style: italic;
+  }
+
+}
+
+.mat-form-field {
+  width: 100%;
+}

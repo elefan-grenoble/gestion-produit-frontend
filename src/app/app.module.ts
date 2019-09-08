@@ -15,7 +15,7 @@ import {
   MatProgressBarModule, MatSnackBarModule,
   MatTableModule, MatTooltipModule
 } from '@angular/material';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {SupplyingComponent} from "./components/supplying/supplying.component";
@@ -23,6 +23,12 @@ import { AddSupplyingDialogComponent } from './components/add-supplying-dialog/a
 import { HomeComponent } from './components/home/home.component';
 import { AddSupplyingButtonComponent } from './components/add-supplying-button/add-supplying-button.component';
 import { AddSupplyingArticlesComponent } from './components/add-supplying-articles/add-supplying-articles.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { MissingBarcodesComponent } from './components/missing-barcodes/missing-barcodes.component';
+import { AddMissingBarcodeArticlesComponent } from './components/add-missing-barcode-articles/add-missing-barcode-articles.component';
+import { AddMissingBarcodeButtonComponent } from './components/add-missing-barcode-button/add-missing-barcode-button.component';
+import { AddMissingBarcodeDialogComponent } from './components/add-missing-barcode-dialog/add-missing-barcode-dialog.component';
 
 registerLocaleData(localeFr);
 
@@ -36,7 +42,13 @@ registerLocaleData(localeFr);
     AddSupplyingDialogComponent,
     HomeComponent,
     AddSupplyingButtonComponent,
-    AddSupplyingArticlesComponent
+    AddSupplyingArticlesComponent,
+    BreadcrumbComponent,
+    DeliveryComponent,
+    MissingBarcodesComponent,
+    AddMissingBarcodeArticlesComponent,
+    AddMissingBarcodeButtonComponent,
+    AddMissingBarcodeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,12 +64,14 @@ registerLocaleData(localeFr);
     MatDialogModule,
     MatIconModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
   entryComponents: [
-    AddSupplyingDialogComponent
+    AddSupplyingDialogComponent,
+    AddMissingBarcodeDialogComponent
   ]
 })
 export class AppModule {
