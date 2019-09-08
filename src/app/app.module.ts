@@ -29,6 +29,10 @@ import { MissingBarcodesComponent } from './components/missing-barcodes/missing-
 import { AddMissingBarcodeArticlesComponent } from './components/add-missing-barcode-articles/add-missing-barcode-articles.component';
 import { AddMissingBarcodeButtonComponent } from './components/add-missing-barcode-button/add-missing-barcode-button.component';
 import { AddMissingBarcodeDialogComponent } from './components/add-missing-barcode-dialog/add-missing-barcode-dialog.component';
+import { TagPrintRequestsComponent } from './components/tag-print-requests/tag-print-requests.component';
+import { AddTagPrintRequestsArticlesComponent } from './components/add-tag-print-requests-articles/add-tag-print-requests-articles.component';
+import { AddTagPrintRequestsDialogComponent } from './components/add-tag-print-requests-dialog/add-tag-print-requests-dialog.component';
+import { AddTagPrintRequestsButtonComponent } from './components/add-tag-print-requests-button/add-tag-print-requests-button.component';
 
 registerLocaleData(localeFr);
 
@@ -48,7 +52,11 @@ registerLocaleData(localeFr);
     MissingBarcodesComponent,
     AddMissingBarcodeArticlesComponent,
     AddMissingBarcodeButtonComponent,
-    AddMissingBarcodeDialogComponent
+    AddMissingBarcodeDialogComponent,
+    TagPrintRequestsComponent,
+    AddTagPrintRequestsArticlesComponent,
+    AddTagPrintRequestsDialogComponent,
+    AddTagPrintRequestsButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +79,8 @@ registerLocaleData(localeFr);
   bootstrap: [AppComponent],
   entryComponents: [
     AddSupplyingDialogComponent,
-    AddMissingBarcodeDialogComponent
+    AddMissingBarcodeDialogComponent,
+    AddTagPrintRequestsDialogComponent
   ]
 })
 export class AppModule {

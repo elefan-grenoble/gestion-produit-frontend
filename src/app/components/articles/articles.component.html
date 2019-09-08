@@ -45,6 +45,7 @@
       <td mat-cell *matCellDef="let article">
         <app-add-supplying-button *ngIf="feature === 'supplying'" [article]="article"></app-add-supplying-button>
         <app-add-missing-barcode-button *ngIf="feature === 'barcodes'" [article]="article"></app-add-missing-barcode-button>
+        <app-add-tag-print-requests-button *ngIf="feature === 'tags'" [article]="article"></app-add-tag-print-requests-button>
       </td>
     </ng-container>
 

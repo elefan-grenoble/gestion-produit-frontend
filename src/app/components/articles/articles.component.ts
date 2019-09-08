@@ -53,6 +53,11 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
         this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
         break;
       }
+      case 'tags': {
+        this.actionColumnTitle = "Ajouter une demande d'impression";
+        this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
+        break;
+      }
       default: {
         console.error("Unknown feature : " + this.feature);
       }

@@ -8,6 +8,8 @@ import {AddSupplyingArticlesComponent} from "./components/add-supplying-articles
 import {DeliveryComponent} from "./components/delivery/delivery.component";
 import {MissingBarcodesComponent} from "./components/missing-barcodes/missing-barcodes.component";
 import {AddMissingBarcodeArticlesComponent} from "./components/add-missing-barcode-articles/add-missing-barcode-articles.component";
+import {TagPrintRequestsComponent} from "./components/tag-print-requests/tag-print-requests.component";
+import {AddTagPrintRequestsArticlesComponent} from "./components/add-tag-print-requests-articles/add-tag-print-requests-articles.component";
 
 const routes: Routes = [
   {
@@ -17,7 +19,9 @@ const routes: Routes = [
       {path: 'add-supplying', component: AddSupplyingArticlesComponent},
       {path: 'delivery', component: DeliveryComponent},
       {path: 'missing-barcodes', component: MissingBarcodesComponent},
-      {path: 'add-missing-barcode', component: AddMissingBarcodeArticlesComponent}
+      {path: 'add-missing-barcode', component: AddMissingBarcodeArticlesComponent},
+      {path: 'tag-print-requests', component: TagPrintRequestsComponent},
+      {path: 'add-tag-print-request', component: AddTagPrintRequestsArticlesComponent}
     ]
   },
   {path: '**', component: PageNotFoundComponent}
