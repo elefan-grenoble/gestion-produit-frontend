@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Supplying} from "../../models/supplying";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AddSupplyingDialogComponent} from "../add-supplying-dialog/add-supplying-dialog.component";
 import {Article} from "../../models/article";
 import {AddMissingBarcodeDialogComponent} from "../add-missing-barcode-dialog/add-missing-barcode-dialog.component";
+import {BarcodesService} from "../../services/barcodes.service";
+import {MissingBarcode} from "../../models/missing-barcode";
 
 @Component({
   selector: 'app-add-missing-barcode-button',
@@ -16,6 +16,7 @@ export class AddMissingBarcodeButtonComponent implements OnInit {
   @Input() article: Article;
 
   constructor(public dialog: MatDialog,
+              private barcodeService: BarcodesService,
               private snackBar: MatSnackBar) {
   }
 
@@ -29,7 +30,18 @@ export class AddMissingBarcodeButtonComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((barcode: number | null) => {
       if (barcode) {
-        // TODO
+        const newBarcode: MissingBarcode = {
+          article: this.article,
+          date: new Date(),
+          barcode: barcode
+        };
+        this.barcodeService.addMissingBarcode(newBarcode).subscribe(
+          _ => {
+            this.snackBar.open('Code barre ajouté, en attente de traitement', "ok", {
+              duration: 5000,
+            });
+          }
+        )
       }
     });
   }
