@@ -1,1 +1,27 @@
-<p>add-tag-print-requests-dialog works!</p>
+<h2>Demander une impression d'étiquette</h2>
+<div mat-dialog-content>
+
+  <div class="article">
+    <div class="designation">{{article.designation}}</div>
+    <div class="fournisseur">{{article.fournisseur.nom.toLowerCase()}}</div>
+    <div class="famille">{{article.famille.nom.toLowerCase()}}</div>
+    <div class="prix">{{article.prix_vente}}€</div>
+  </div>
+
+  <mat-form-field>
+    <input matInput placeholder="Quantité souhaitée" type="number" [(ngModel)]="quantity">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Raison</mat-label>
+    <mat-select [(value)]="reason">
+      <mat-option *ngFor="let reasonOpt of possibleReasons" [value]="reasonOpt">{{reasonOpt}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="accent" (click)="cancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="submit()" [disabled]="!reason || !quantity">Ajouter</button>
+</div>

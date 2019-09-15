@@ -6,3 +6,36 @@
     <span>Ajouter un demande d'impression</span>
   </a>
 </div>
+
+<table mat-table [dataSource]="tagPrintRequests" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="article">
+    <th mat-header-cell *matHeaderCellDef> Article</th>
+    <td mat-cell *matCellDef="let tag">
+      <span>{{tag.article.designation}}</span><br>
+      <span class="article-code">Code article: {{tag.article.code}}</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantité</th>
+    <td mat-cell *matCellDef="let tag"> {{tag.quantity}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="reason">
+    <th mat-header-cell *matHeaderCellDef> Raison</th>
+    <td mat-cell *matCellDef="let tag"> {{tag.reason}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Signaler comme traité</th>
+    <td mat-cell *matCellDef="let tag">
+      <button mat-icon-button color="primary" (click)="delete(tag)"
+              matTooltip="Supprimer (les étiquettes ont été imprimées)">
+        <mat-icon>check</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

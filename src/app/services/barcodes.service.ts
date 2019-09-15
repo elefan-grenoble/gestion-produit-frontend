@@ -12,11 +12,18 @@ export class BarcodesService {
   }
 
   getMissingBarcodes(): Observable<MissingBarcode[]> {
-    return this.http.get<MissingBarcode[]>('TODO');
+    return this.http.get<MissingBarcode[]>('/api/missing_barcodes');
   }
 
-  addMissingBarcode(barcode: MissingBarcode): Observable<MissingBarcode> {
-    return this.http.post<MissingBarcode>('/api/missing_barcodes', barcode);
+  addMissingBarcode(articleCode: number, barcode: number): Observable<MissingBarcode> {
+    return this.http.post<MissingBarcode>('/api/missing_barcodes', {
+      article: articleCode,
+      barcode: +barcode
+    });
+  }
+
+  deleteMissingBarcode(id: number): Observable<void> {
+    return this.http.delete<void>('/api/missing_barcodes/' + id);
   }
 
 }

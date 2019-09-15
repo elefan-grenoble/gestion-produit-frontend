@@ -33,6 +33,7 @@ import { TagPrintRequestsComponent } from './components/tag-print-requests/tag-p
 import { AddTagPrintRequestsArticlesComponent } from './components/add-tag-print-requests-articles/add-tag-print-requests-articles.component';
 import { AddTagPrintRequestsDialogComponent } from './components/add-tag-print-requests-dialog/add-tag-print-requests-dialog.component';
 import { AddTagPrintRequestsButtonComponent } from './components/add-tag-print-requests-button/add-tag-print-requests-button.component';
+import {MatSelectModule} from "@angular/material/select";
 
 registerLocaleData(localeFr);
 
@@ -73,7 +74,8 @@ registerLocaleData(localeFr);
     MatIconModule,
     MatTooltipModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

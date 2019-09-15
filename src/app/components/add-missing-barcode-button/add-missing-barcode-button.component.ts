@@ -30,15 +30,17 @@ export class AddMissingBarcodeButtonComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((barcode: number | null) => {
       if (barcode) {
-        const newBarcode: MissingBarcode = {
-          article: this.article,
-          date: new Date(),
-          barcode: barcode
-        };
-        this.barcodeService.addMissingBarcode(newBarcode).subscribe(
+        this.barcodeService.addMissingBarcode(this.article.code, barcode).subscribe(
           _ => {
             this.snackBar.open('Code barre ajouté, en attente de traitement', "ok", {
               duration: 5000,
+            });
+          },
+          err => {
+            console.log(err);
+            this.snackBar.open("Oups ! Une erreur s'est produite!", "ok", {
+              duration: 5000,
+              panelClass: 'error'
             });
           }
         )
