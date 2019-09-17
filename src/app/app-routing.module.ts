@@ -14,8 +14,8 @@ import {AddTagPrintRequestsArticlesComponent} from "./components/add-tag-print-r
 const routes: Routes = [
   {
     path: '', canActivate: [AuthGuard], children: [
-      {path: '', component: HomeComponent},
-      {path: 'supplying', component: SupplyingComponent},
+      {path: '', component: HomeComponent, data: {breadcrumb: {label: 'Accueil', icon: 'home'}}},
+      {path: 'supplying', component: SupplyingComponent, data: {breadcrumb: {label: 'Produits à réapprovisionner', icon: 'add_shopping_cart'}}},
       {path: 'add-supplying', component: AddSupplyingArticlesComponent},
       {path: 'delivery', component: DeliveryComponent},
       {path: 'missing-barcodes', component: MissingBarcodesComponent},
