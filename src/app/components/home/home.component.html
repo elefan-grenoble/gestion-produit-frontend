@@ -3,45 +3,12 @@
 
   <nav class="menu">
 
-    <div class="menu-item-container">
-      <div class="menu-item" routerLink="/supplying">
-        <div class="menu-item-title">Gérer le réapprovisonnement</div>
+    <div *ngFor="let menuItem of menuItems" class="menu-item-container">
+      <div class="menu-item" [routerLink]="menuItem.url">
+        <div class="menu-item-title">{{menuItem.label}}</div>
         <div class="menu-item-icon-container">
           <div class="menu-item-icon">
-            <mat-icon>add_shopping_cart</mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="menu-item-container">
-      <div class="menu-item" routerLink="/delivery">
-        <div class="menu-item-title">Réceptionner une livraison</div>
-        <div class="menu-item-icon-container">
-          <div class="menu-item-icon">
-            <mat-icon>local_shipping</mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="menu-item-container">
-      <div class="menu-item" routerLink="/missing-barcodes">
-        <div class="menu-item-title">Signaler un code barre manquant</div>
-        <div class="menu-item-icon-container">
-          <div class="menu-item-icon">
-            <mat-icon>playlist_add</mat-icon>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="menu-item-container">
-      <div class="menu-item" routerLink="/tag-print-requests">
-        <div class="menu-item-title">Demander une impression d'étiquette</div>
-        <div class="menu-item-icon-container">
-          <div class="menu-item-icon">
-            <mat-icon>print</mat-icon>
+            <mat-icon>{{menuItem.icon}}</mat-icon>
           </div>
         </div>
       </div>
