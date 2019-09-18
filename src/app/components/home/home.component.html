@@ -1,8 +1,5 @@
 <div class="home-container">
-  <h1>Gestion produits</h1>
-
   <nav class="menu">
-
     <div *ngFor="let menuItem of menuItems" class="menu-item-container">
       <div class="menu-item" [routerLink]="menuItem.url">
         <div class="menu-item-title">{{menuItem.label}}</div>
@@ -13,6 +10,5 @@
         </div>
       </div>
     </div>
-
   </nav>
 </div>

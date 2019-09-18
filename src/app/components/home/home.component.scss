@@ -5,12 +5,13 @@ $hover-color: #27ABD9;
   text-align: center;
 
   .menu {
+    margin: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    max-width: 1000px;
 
     .menu-item-container {
 
+      flex-grow: 1;
       margin-top: 20px;
 
       .menu-item {
