@@ -29,7 +29,6 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       .pipe(filter(event => event instanceof NavigationEnd)).subscribe(
         event => {
           this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
-          console.log(this.breadcrumbs);
         }
       );
   }
