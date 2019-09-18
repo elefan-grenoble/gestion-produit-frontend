@@ -1,8 +1,9 @@
 <div class="breadcrumb-container">
   <ul class="breadcrumbs">
-    <li *ngFor="let breadcrumb of breadcrumbs"><a [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a></li>
-    <!--        <li><a routerLink="/"><mat-icon>home</mat-icon> Accueil</a></li>-->
-    <!--        <li><a routerLink="/supplying">Réapprovisionnement</a></li>-->
-    <!--        <li>Ajouter un produit au réapprovisionnement</li>-->
+    <li *ngFor="let breadcrumb of breadcrumbs; let last = last">
+      <mat-icon>{{breadcrumb.icon}}</mat-icon>
+      <a *ngIf="!last" [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a>
+      <span *ngIf="last">{{breadcrumb.label}}</span>
+    </li>
   </ul>
 </div>

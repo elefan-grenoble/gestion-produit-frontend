@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Article} from "../../models/article";
+import {Article} from "../../../models/article";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AddTagPrintRequestsDialogComponent} from "../add-tag-print-requests-dialog/add-tag-print-requests-dialog.component";
-import {TagsService} from "../../services/tags.service";
+import {TagsService} from "../../../services/tags.service";
 
 @Component({
   selector: 'app-add-tag-print-requests-button',

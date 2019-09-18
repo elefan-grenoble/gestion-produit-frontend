@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Article} from "../../models/article";
+import {Article} from "../../../models/article";
 import {AddMissingBarcodeDialogComponent} from "../add-missing-barcode-dialog/add-missing-barcode-dialog.component";
-import {BarcodesService} from "../../services/barcodes.service";
-import {MissingBarcode} from "../../models/missing-barcode";
+import {BarcodesService} from "../../../services/barcodes.service";
+import {MissingBarcode} from "../../../models/missing-barcode";
 
 @Component({
   selector: 'app-add-missing-barcode-button',

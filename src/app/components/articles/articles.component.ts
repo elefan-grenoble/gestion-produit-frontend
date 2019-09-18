@@ -3,7 +3,7 @@ import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
 import {MatDialog, MatInput, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
 import {LoadingService} from '../../services/loading.service';
-import {AddSupplyingDialogComponent} from "../add-supplying-dialog/add-supplying-dialog.component";
+import {AddSupplyingDialogComponent} from "../supplying/add-supplying-dialog/add-supplying-dialog.component";
 import {SupplyingService} from "../../services/supplying.service";
 import {Supplying} from "../../models/supplying";
 import {DatePipe} from "@angular/common";

@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Article} from "../../models/article";
-import {Supplying} from "../../models/supplying";
-import {LoadingService} from "../../services/loading.service";
-import {SupplyingService} from "../../services/supplying.service";
+import {Article} from "../../../models/article";
+import {Supplying} from "../../../models/supplying";
+import {LoadingService} from "../../../services/loading.service";
+import {SupplyingService} from "../../../services/supplying.service";
 import {AddSupplyingDialogComponent} from "../add-supplying-dialog/add-supplying-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";

@@ -1,9 +1,11 @@
 .mat-icon {
-  vertical-align: text-bottom;
+  vertical-align: sub;
   font-size: 16px;
-  height: 15px;
-  width: 15px;
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
 }
+
 .breadcrumb-container {
   margin: 0;
   background-color: #F5F5F5;
@@ -25,12 +27,12 @@
       color: hsl(0, 0%, 30%);
 
       a {
-        display: block;
         padding: 0 30px 0 0;
-        color: hsl(0, 0%, 30%);
+        color: #27ABD9;
         text-decoration: none;
         position: relative;
         perspective: 700px;
+
       }
 
       a:after {
@@ -46,10 +48,15 @@
         transform: rotateZ(45deg);
       }
 
+      a:hover {
+        text-decoration: underline;
+      }
+
       a:hover:after {
         right: 12px;
       }
 
     }
+
   }
 }
