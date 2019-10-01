@@ -29,7 +29,7 @@ const routes: Routes = [
       },
       {
         path: 'delivery',
-        data: {breadcrumb: {label: 'Réception de livraison', icon: 'local_shipping'}},
+        data: {breadcrumb: {label: 'Emplacements des stocks', icon: 'gps_fixed'}},
         component: DeliveryComponent
       },
       {

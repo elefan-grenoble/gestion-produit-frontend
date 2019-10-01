@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
     },
     {
       url: "/delivery",
-      label: "Réceptionner une livraison",
-      icon: "local_shipping"
+      label: "Emplacements des stocks",
+      icon: "gps_fixed"
     },
     {
       url: "/missing-barcodes",
