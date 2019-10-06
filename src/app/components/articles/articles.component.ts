@@ -86,7 +86,14 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // Replace accentued chars by their ASCII equivalent and replace quotes by spaces
+    let normalized = filterValue
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace('\'', ' ')
+      .trim()
+      .toLowerCase();
+    this.dataSource.filter = normalized;
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
