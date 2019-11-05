@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private userStatusSubscription: Subscription;
 
-  private userStatus: UserStatus;
+  userStatus: UserStatus;
 
   constructor(private loadingService: LoadingService, private sessionService: SessionService) {
   }
