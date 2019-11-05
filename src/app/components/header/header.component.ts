@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LoadingService} from '../../services/loading.service';
 import {Subscription} from 'rxjs';
+import {SessionService} from '../../services/session.service';
+import {UserStatus} from '../../guards/auth.guard';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +14,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   progressBarMode = 'determinate';
 
   private subscription: Subscription;
+  private userStatusSubscription: Subscription;
 
-  constructor(private loadingService: LoadingService) {
+  private userStatus: UserStatus;
+
+  constructor(private loadingService: LoadingService, private sessionService: SessionService) {
   }
 
   ngOnInit() {
+    this.userStatusSubscription = this.sessionService.userStatusSubject.subscribe(
+      (userStatus: UserStatus) => this.userStatus = userStatus
+    );
     this.subscription = this.loadingService.getSubject().subscribe(
       (show: boolean) => {
         if (show) this.showProgress(); else this.hideProgress();
@@ -34,6 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.userStatusSubscription.unsubscribe();
   }
 
 }
