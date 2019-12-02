@@ -120,11 +120,13 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   updateCameraDeviceAvailability() {
     if (!navigator.mediaDevices) {
       this.cameraAvailable = false;
+      return;
     }
 
     let md = navigator.mediaDevices;
     if (!md || !md.enumerateDevices) {
       this.cameraAvailable = false;
+      return;
     }
 
     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
@@ -135,7 +137,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     }).catch(err => {
       console.log(err);
       /* handle the error */
-      this.cameraAvailable = false
+      this.cameraAvailable = false;
     });
   }
 
