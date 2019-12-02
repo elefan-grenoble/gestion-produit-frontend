@@ -25,6 +25,7 @@ export class SessionService {
     this.http.get<any>(status.disconnect_url).subscribe(
       (ret: any) => {
         this.updateUserStatus(null);
+        window.location.href = "http://membres-preprod.lelefan.org/logout";
       },
       err => {
         console.error(err);
