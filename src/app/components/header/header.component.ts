@@ -45,4 +45,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userStatusSubscription.unsubscribe();
   }
 
+  disconnect() {
+    this.sessionService.disconnect(this.userStatus);
+  }
 }

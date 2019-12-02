@@ -8,6 +8,7 @@ import {SessionService} from '../services/session.service';
 export interface UserStatus {
   logged: boolean;
   oauth_url: string;
+  disconnect_url: string;
   vip_ip: boolean;
   user?: User;
 }
