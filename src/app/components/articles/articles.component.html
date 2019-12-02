@@ -5,8 +5,11 @@
       <input matInput #searchInput="matInput" (keyup)="applyFilter($event.target.value)"
              placeholder="Recherche (code barre, désignation ou fournisseur)">
     </mat-form-field>
-    <button mat-raised-button (click)="resetFilter()">Effacer</button>
+    <button mat-raised-button (click)="resetFilter()"><mat-icon>clear</mat-icon>Effacer</button>
+    <button *ngIf="cameraAvailable" mat-raised-button (click)="scanBarCode()"><mat-icon>camera</mat-icon>{{ barecodeScanner.isStarted() === true ? 'Arrêter' : 'Scanner' }}</button>
   </div>
+
+  <barcode-scanner-livestream type="ean" (valueChanges)="onBarCodeDetected($event)"></barcode-scanner-livestream>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 

@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
+import {BarecodeScannerLivestreamComponent} from 'ngx-barcode-scanner';
 import {MatDialog, MatInput, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
 import {LoadingService} from '../../services/loading.service';
 import {AddSupplyingDialogComponent} from "../supplying/add-supplying-dialog/add-supplying-dialog.component";
@@ -23,6 +24,10 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
 
   @ViewChild('searchInput', {static: true}) searchInput: MatInput;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  @ViewChild(BarecodeScannerLivestreamComponent, {static: true})
+  barecodeScanner: BarecodeScannerLivestreamComponent;
+  cameraAvailable: boolean = false;
 
   dataSource: MatTableDataSource<Article>;
 
@@ -83,6 +88,8 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.searchInput.focus();
+    // We can't use a reactive property because the check is asynchronous
+    this.updateCameraDeviceAvailability();
   }
 
   applyFilter(filterValue: string) {
@@ -98,4 +105,45 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     this.searchInput.focus();
   }
 
+  scanBarCode() {
+    try {
+      if (this.barecodeScanner.isStarted()) {
+        this.barecodeScanner.stop();
+      } else {
+        this.barecodeScanner.start();
+      }
+    } catch (exception) {
+      alert('Pas de camera disponible sur cet appareil');
+    }
+  }
+
+  updateCameraDeviceAvailability() {
+    if (!navigator.mediaDevices) {
+      this.cameraAvailable = false;
+      return;
+    }
+
+    let md = navigator.mediaDevices;
+    if (!md || !md.enumerateDevices) {
+      this.cameraAvailable = false;
+      return;
+    }
+
+    navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
+      this.cameraAvailable = true;
+      stream.getTracks().forEach(function(track) {
+        track.stop();
+      });
+    }).catch(err => {
+      console.log(err);
+      /* handle the error */
+      this.cameraAvailable = false;
+    });
+  }
+
+  onBarCodeDetected(result) {
+    this.searchInput.value = result.codeResult.code;
+    this.barecodeScanner.stop();
+    this.applyFilter(this.searchInput.value);
+  }
 }
