@@ -123,7 +123,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
       this.cameraAvailable = false;
       return;
     }
-    
+
     if (!navigator.mediaDevices) {
       this.cameraAvailable = false;
       return;
