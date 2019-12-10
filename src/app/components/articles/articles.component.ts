@@ -8,6 +8,7 @@ import {AddSupplyingDialogComponent} from "../supplying/add-supplying-dialog/add
 import {SupplyingService} from "../../services/supplying.service";
 import {Supplying} from "../../models/supplying";
 import {DatePipe} from "@angular/common";
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-articles',
@@ -118,6 +119,11 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   }
 
   updateCameraDeviceAvailability() {
+    if (!environment.barcodeScanner) {
+      this.cameraAvailable = false;
+      return;
+    }
+    
     if (!navigator.mediaDevices) {
       this.cameraAvailable = false;
       return;
