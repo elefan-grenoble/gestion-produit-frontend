@@ -9,6 +9,7 @@ export interface UserStatus {
   logged: boolean;
   oauth_url: string;
   disconnect_url: string;
+  logout_page_url: string;
   vip_ip: boolean;
   user?: User;
 }
