@@ -32,8 +32,11 @@
   }
 
   .user {
-    margin: 12px 0 8px 0;
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 
     .username {
 
