@@ -16,7 +16,7 @@
         <a *ngIf="userStatus.vip_ip" [href]="userStatus.oauth_url">Se connecter
           <mat-icon>exit_to_app</mat-icon>
         </a>
-        <a *ngIf="!userStatus.vip_ip" (click)="disconnect()">Se déconnecter
+        <a routerLink="" *ngIf="!userStatus.vip_ip" (click)="disconnect()">Se déconnecter
           <mat-icon>exit_to_app</mat-icon>
         </a>
       </div>
