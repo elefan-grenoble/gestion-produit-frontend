@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Supplying} from "../models/supplying";
 
@@ -24,6 +24,13 @@ export class SupplyingService {
 
   updateSupplying(supplying: Supplying): Observable<void> {
     return this.http.put<void>('/api/supplying/' + supplying.id, supplying);
+  }
+
+  deleteSupplying(supplying: Supplying, out_of_stock: boolean): Observable<void> {
+    const options = {
+      params: new HttpParams().set('out_of_stock', out_of_stock.toString())
+    };
+    return this.http.delete<void>('/api/supplying/' + supplying.id, options);
   }
 
 }
