@@ -33,6 +33,7 @@ import { TagPrintRequestsComponent } from './components/tag-print-requests/tag-p
 import { AddTagPrintRequestsArticlesComponent } from './components/tag-print-requests/add-tag-print-requests-articles/add-tag-print-requests-articles.component';
 import { AddTagPrintRequestsDialogComponent } from './components/tag-print-requests/add-tag-print-requests-dialog/add-tag-print-requests-dialog.component';
 import { AddTagPrintRequestsButtonComponent } from './components/tag-print-requests/add-tag-print-requests-button/add-tag-print-requests-button.component';
+import { StockComponent } from './components/stock/stock.component';
 import {MatSelectModule} from "@angular/material/select";
 import {BarecodeScannerLivestreamModule} from 'ngx-barcode-scanner';
 
@@ -58,7 +59,8 @@ registerLocaleData(localeFr);
     TagPrintRequestsComponent,
     AddTagPrintRequestsArticlesComponent,
     AddTagPrintRequestsDialogComponent,
-    AddTagPrintRequestsButtonComponent
+    AddTagPrintRequestsButtonComponent,
+    StockComponent
   ],
   imports: [
     BarecodeScannerLivestreamModule,

@@ -33,6 +33,11 @@ export class HomeComponent implements OnInit {
       url: "/tag-print-requests",
       label: "Demander une impression d'étiquette",
       icon: "print"
+    },
+    {
+      url: "/stock",
+      label: "Consulter la quantité de produits en stock",
+      icon: "chrome_reader_mode"
     }
   ];
 
