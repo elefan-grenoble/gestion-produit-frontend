@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {LoadingService} from "../../services/loading.service";
-import {TagsService} from "../../services/tags.service";
-import {TagPrintRequest} from "../../models/tag-print-request";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {LoadingService} from '../../services/loading.service';
+import {TagsService} from '../../services/tags.service';
+import {TagPrintRequest} from '../../models/tag-print-request';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tag-print-requests',
@@ -24,13 +24,13 @@ export class TagPrintRequestsComponent implements OnInit {
     this.tagService.getTagPrintRequests().subscribe(
       (tagPrintRequests: TagPrintRequest[]) => {
         this.tagPrintRequests = tagPrintRequests;
-        this.loadingService.taskFinished()
+        this.loadingService.taskFinished();
       },
       err => {
         this.loadingService.taskFinished();
         console.log(err);
       }
-    )
+    );
   }
 
   private cancelDelete(tagPrintRequest: TagPrintRequest) {
@@ -43,12 +43,12 @@ export class TagPrintRequestsComponent implements OnInit {
       err => {
         this.loadingService.taskFinished();
         console.log(err);
-        this.snackBar.open("Oups ! Une erreur s'est produite!", "ok", {
+        this.snackBar.open('Oups ! Une erreur s\'est produite!', 'ok', {
           duration: 5000,
           panelClass: 'error'
         });
       }
-    )
+    );
   }
 
   delete(tagPrintRequest: TagPrintRequest) {
@@ -57,22 +57,22 @@ export class TagPrintRequestsComponent implements OnInit {
       _ => {
         this.loadingService.taskFinished();
         this.tagPrintRequests = this.tagPrintRequests.filter(b => b.id !== tagPrintRequest.id);
-        const snackRef = this.snackBar.open("Demande d'impression supprimée", "Annuler", {
+        const snackRef = this.snackBar.open('Demande d\'impression supprimée', 'Annuler', {
           duration: 5000,
         });
         snackRef.afterDismissed().subscribe(info => {
-          if (info.dismissedByAction === true) this.cancelDelete(tagPrintRequest);
+          if (info.dismissedByAction === true) { this.cancelDelete(tagPrintRequest); }
         });
       },
       err => {
         this.loadingService.taskFinished();
         console.log(err);
-        this.snackBar.open("Oups ! Une erreur s'est produite!", "ok", {
+        this.snackBar.open('Oups ! Une erreur s\'est produite!', 'ok', {
           duration: 5000,
           panelClass: 'error'
         });
       }
-    )
+    );
   }
 
 }

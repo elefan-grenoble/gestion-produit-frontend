@@ -21,7 +21,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import {SupplyingComponent} from "./components/supplying/supplying.component";
+import {SupplyingComponent} from './components/supplying/supplying.component';
 import { AddSupplyingDialogComponent } from './components/supplying/add-supplying-dialog/add-supplying-dialog.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddSupplyingButtonComponent } from './components/supplying/add-supplying-button/add-supplying-button.component';

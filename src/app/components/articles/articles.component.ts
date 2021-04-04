@@ -6,10 +6,10 @@ import {MatInput} from '@angular/material/input';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {LoadingService} from '../../services/loading.service';
-import {AddSupplyingDialogComponent} from "../supplying/add-supplying-dialog/add-supplying-dialog.component";
-import {SupplyingService} from "../../services/supplying.service";
-import {Supplying} from "../../models/supplying";
-import {DatePipe} from "@angular/common";
+import {AddSupplyingDialogComponent} from '../supplying/add-supplying-dialog/add-supplying-dialog.component';
+import {SupplyingService} from '../../services/supplying.service';
+import {Supplying} from '../../models/supplying';
+import {DatePipe} from '@angular/common';
 import {environment} from '../../../environments/environment';
 
 @Component({
@@ -21,7 +21,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['designation', 'famille', 'prix_vente'];
 
-  actionColumnTitle: string = 'Actions';
+  actionColumnTitle = 'Actions';
 
   @Input() feature: string;
 
@@ -38,7 +38,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     return article.designation.toLowerCase().indexOf(filter) != -1 ||
       article.fournisseur.nom.toLowerCase().indexOf(filter) != -1 ||
       article.code.toString() === filter;
-  };
+  }
 
   constructor(private articleService: ArticlesService,
               private loadingService: LoadingService) {
@@ -48,7 +48,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     this.loadArticles();
     switch (this.feature) {
       case 'supplying': {
-        this.actionColumnTitle = "Ajouter";
+        this.actionColumnTitle = 'Ajouter';
         this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
         break;
       }
@@ -57,12 +57,12 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
         break;
       }
       case 'barcodes': {
-        this.actionColumnTitle = "Ajouter un code barre";
+        this.actionColumnTitle = 'Ajouter un code barre';
         this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
         break;
       }
       case 'tags': {
-        this.actionColumnTitle = "Ajouter une demande d'impression";
+        this.actionColumnTitle = 'Ajouter une demande d\'impression';
         this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
         break;
       }
@@ -71,7 +71,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
         break;
       }
       default: {
-        console.error("Unknown feature : " + this.feature);
+        console.error('Unknown feature : ' + this.feature);
       }
     }
   }
@@ -90,7 +90,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
         console.error(err);
         this.loadingService.taskFinished();
       }
-    )
+    );
   }
 
   ngAfterViewInit(): void {
@@ -135,7 +135,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    let md = navigator.mediaDevices;
+    const md = navigator.mediaDevices;
     if (!md || !md.enumerateDevices) {
       this.cameraAvailable = false;
       return;

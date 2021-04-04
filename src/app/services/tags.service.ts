@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {TagPrintRequest} from "../models/tag-print-request";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {TagPrintRequest} from '../models/tag-print-request';
 
 @Injectable({
   providedIn: 'root'

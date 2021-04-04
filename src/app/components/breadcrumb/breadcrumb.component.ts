@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {Subscription} from "rxjs";
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 export interface BreadCrumb {
@@ -47,8 +47,8 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       newBreadcrumbs = [...breadcrumbs, breadcrumb];
     }
     if (route.firstChild) {
-      //If we are not on our current path yet,
-      //there will be more children to look after, to build our breadcumb
+      // If we are not on our current path yet,
+      // there will be more children to look after, to build our breadcumb
       return this.buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs);
     }
     return newBreadcrumbs;

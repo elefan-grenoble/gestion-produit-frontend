@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Article} from "../../../models/article";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Article} from '../../../models/article';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-tag-print-requests-dialog',
@@ -14,8 +14,8 @@ export class AddTagPrintRequestsDialogComponent implements OnInit {
   reason: string;
 
   possibleReasons: string[] = [
-    "Etiquette manquante",
-    "Prix erroné"
+    'Etiquette manquante',
+    'Prix erroné'
   ];
 
   constructor(

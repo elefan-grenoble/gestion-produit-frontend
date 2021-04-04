@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Article} from "../../../models/article";
-import {AddMissingBarcodeDialogComponent} from "../add-missing-barcode-dialog/add-missing-barcode-dialog.component";
-import {BarcodesService} from "../../../services/barcodes.service";
-import {MissingBarcode} from "../../../models/missing-barcode";
+import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Article} from '../../../models/article';
+import {AddMissingBarcodeDialogComponent} from '../add-missing-barcode-dialog/add-missing-barcode-dialog.component';
+import {BarcodesService} from '../../../services/barcodes.service';
+import {MissingBarcode} from '../../../models/missing-barcode';
 
 @Component({
   selector: 'app-add-missing-barcode-button',
@@ -32,18 +32,18 @@ export class AddMissingBarcodeButtonComponent implements OnInit {
       if (barcode) {
         this.barcodeService.addMissingBarcode(this.article.code, barcode).subscribe(
           _ => {
-            this.snackBar.open('Code barre ajouté, en attente de traitement', "ok", {
+            this.snackBar.open('Code barre ajouté, en attente de traitement', 'ok', {
               duration: 5000,
             });
           },
           err => {
             console.log(err);
-            this.snackBar.open("Oups ! Une erreur s'est produite!", "ok", {
+            this.snackBar.open('Oups ! Une erreur s\'est produite!', 'ok', {
               duration: 5000,
               panelClass: 'error'
             });
           }
-        )
+        );
       }
     });
   }

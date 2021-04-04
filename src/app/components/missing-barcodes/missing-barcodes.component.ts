@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {LoadingService} from "../../services/loading.service";
-import {BarcodesService} from "../../services/barcodes.service";
-import {MissingBarcode} from "../../models/missing-barcode";
-import {logger} from "codelyzer/util/logger";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {LoadingService} from '../../services/loading.service';
+import {BarcodesService} from '../../services/barcodes.service';
+import {MissingBarcode} from '../../models/missing-barcode';
+import {logger} from 'codelyzer/util/logger';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-missing-barcodes',
@@ -32,7 +32,7 @@ export class MissingBarcodesComponent implements OnInit {
         logger.error(err);
         this.loadingService.taskStarted();
       }
-    )
+    );
   }
 
   private cancelDelete(barcode: MissingBarcode) {
@@ -45,12 +45,12 @@ export class MissingBarcodesComponent implements OnInit {
       err => {
         this.loadingService.taskFinished();
         console.log(err);
-        this.snackBar.open("Oups ! Une erreur s'est produite!", "ok", {
+        this.snackBar.open('Oups ! Une erreur s\'est produite!', 'ok', {
           duration: 5000,
           panelClass: 'error'
         });
       }
-    )
+    );
   }
 
   delete(barcode: MissingBarcode) {
@@ -59,22 +59,22 @@ export class MissingBarcodesComponent implements OnInit {
       _ => {
         this.loadingService.taskFinished();
         this.barcodes = this.barcodes.filter(b => b.id !== barcode.id);
-        const snackRef = this.snackBar.open("Code barre supprimé", "Annuler", {
+        const snackRef = this.snackBar.open('Code barre supprimé', 'Annuler', {
           duration: 5000,
         });
         snackRef.afterDismissed().subscribe(info => {
-          if (info.dismissedByAction === true) this.cancelDelete(barcode);
+          if (info.dismissedByAction === true) { this.cancelDelete(barcode); }
         });
       },
       err => {
         this.loadingService.taskFinished();
         console.log(err);
-        this.snackBar.open("Oups ! Une erreur s'est produite!", "ok", {
+        this.snackBar.open('Oups ! Une erreur s\'est produite!', 'ok', {
           duration: 5000,
           panelClass: 'error'
         });
       }
-    )
+    );
   }
 
 }

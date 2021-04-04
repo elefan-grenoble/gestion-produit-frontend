@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Article} from "../../../models/article";
-import {Supplying} from "../../../models/supplying";
-import {LoadingService} from "../../../services/loading.service";
-import {SupplyingService} from "../../../services/supplying.service";
-import {AddSupplyingDialogComponent} from "../add-supplying-dialog/add-supplying-dialog.component";
-import {MatDialog} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {Article} from '../../../models/article';
+import {Supplying} from '../../../models/supplying';
+import {LoadingService} from '../../../services/loading.service';
+import {SupplyingService} from '../../../services/supplying.service';
+import {AddSupplyingDialogComponent} from '../add-supplying-dialog/add-supplying-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-supplying-button',
@@ -46,7 +46,7 @@ export class AddSupplyingButtonComponent implements OnInit {
       data: {article: this.article, currentSupplying: supplying}
     });
     dialogRef.afterClosed().subscribe((quantity: number | null) => {
-      if (quantity && !supplying) this.addToSupplying(quantity);
+      if (quantity && !supplying) { this.addToSupplying(quantity); }
       else if (quantity && supplying) {
         supplying.quantity = quantity;
         this.updateSupplying(supplying);
@@ -56,7 +56,7 @@ export class AddSupplyingButtonComponent implements OnInit {
 
   private addToSupplying(quantity: number) {
     this.supplyingService.addToSupplyingList(this.article.code, quantity).subscribe((supplying: Supplying) => {
-        this.snackBar.open('Article ajouté au réapprovisionnement', "ok", {
+        this.snackBar.open('Article ajouté au réapprovisionnement', 'ok', {
           duration: 5000,
         });
       }
@@ -65,7 +65,7 @@ export class AddSupplyingButtonComponent implements OnInit {
 
   private updateSupplying(supplying: Supplying) {
     this.supplyingService.updateSupplying(supplying).subscribe(_ => {
-        this.snackBar.open('Quantité à réapprovisionner mise à jour', "ok", {
+        this.snackBar.open('Quantité à réapprovisionner mise à jour', 'ok', {
           duration: 5000,
         });
       }
