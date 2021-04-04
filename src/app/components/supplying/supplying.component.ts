@@ -56,8 +56,8 @@ export class SupplyingComponent implements OnInit, OnDestroy {
     this.supplyingService.updateSupplying(supplying).subscribe(_ => this.reload());
   }
 
-  private updateSupplying(supplying: Supplying, message: string) {
-    this.supplyingService.updateSupplying(supplying).subscribe(
+  private deleteSupplying(supplying: Supplying, message: string, out_of_stock: boolean) {
+    this.supplyingService.deleteSupplying(supplying, out_of_stock).subscribe(
       _ => {
         this.reload();
         const snackRef = this.snackBar.open(message, "Annuler", {
@@ -74,13 +74,13 @@ export class SupplyingComponent implements OnInit, OnDestroy {
 
   supplied(supplying: Supplying) {
     supplying.supply_date = this.nowString();
-    this.updateSupplying(supplying, "Article réapprovisioné");
+    this.deleteSupplying(supplying, "Article réapprovisioné", false);
   }
 
   notSupplied(supplying: Supplying) {
     supplying.supply_date = this.nowString();
     supplying.out_of_stock = true;
-    this.updateSupplying(supplying, "Article non trouvé");
+    this.deleteSupplying(supplying, "Article non trouvé", true);
   }
 
 }
