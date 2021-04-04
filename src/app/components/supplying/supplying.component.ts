@@ -4,7 +4,7 @@ import {Supplying} from "../../models/supplying";
 import {DatePipe} from "@angular/common";
 import {Subscription, timer} from "rxjs";
 import {switchMap} from "rxjs/operators";
-import {MatSnackBar} from "@angular/material";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-supplying',

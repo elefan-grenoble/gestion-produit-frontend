@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {Article} from "../../../models/article";
-import {Supplying} from "../../../models/supplying";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Article} from '../../../models/article';
+import {Supplying} from '../../../models/supplying';
 
 interface DialogData {
   article: Article;

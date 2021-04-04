@@ -1,8 +1,10 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ArticlesService} from '../../services/articles.service';
 import {Article} from '../../models/article';
-import {BarecodeScannerLivestreamComponent} from 'ngx-barcode-scanner';
-import {MatDialog, MatInput, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
+import {BarcodeScannerLivestreamComponent} from 'ngx-barcode-scanner';
+import {MatInput} from '@angular/material/input';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 import {LoadingService} from '../../services/loading.service';
 import {AddSupplyingDialogComponent} from "../supplying/add-supplying-dialog/add-supplying-dialog.component";
 import {SupplyingService} from "../../services/supplying.service";
@@ -26,9 +28,9 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   @ViewChild('searchInput', {static: true}) searchInput: MatInput;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  @ViewChild(BarecodeScannerLivestreamComponent, {static: true})
-  barecodeScanner: BarecodeScannerLivestreamComponent;
-  cameraAvailable: boolean = false;
+  @ViewChild(BarcodeScannerLivestreamComponent, {static: true})
+  barecodeScanner: BarcodeScannerLivestreamComponent;
+  cameraAvailable = false;
 
   dataSource: MatTableDataSource<Article>;
 
@@ -112,7 +114,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
 
   scanBarCode() {
     try {
-      if (this.barecodeScanner.isStarted()) {
+      if (this.barecodeScanner.isStarted) {
         this.barecodeScanner.stop();
       } else {
         this.barecodeScanner.start();
