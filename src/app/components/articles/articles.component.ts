@@ -64,6 +64,10 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
         this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
         break;
       }
+      case 'stock': {
+        this.displayedColumns = ['designation', 'qte_stock', 'qte_commande'];
+        break;
+      }
       default: {
         console.error("Unknown feature : " + this.feature);
       }

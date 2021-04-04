@@ -10,6 +10,7 @@ import {MissingBarcodesComponent} from "./components/missing-barcodes/missing-ba
 import {AddMissingBarcodeArticlesComponent} from "./components/missing-barcodes/add-missing-barcode-articles/add-missing-barcode-articles.component";
 import {TagPrintRequestsComponent} from "./components/tag-print-requests/tag-print-requests.component";
 import {AddTagPrintRequestsArticlesComponent} from "./components/tag-print-requests/add-tag-print-requests-articles/add-tag-print-requests-articles.component";
+import {StockComponent} from "./components/stock/stock.component";
 
 const routes: Routes = [
   {
@@ -51,7 +52,12 @@ const routes: Routes = [
             data: {breadcrumb: {label: 'Ajouter', icon: 'add'}}
           }
         ]
-      }
+      },
+      {
+        path: 'stock',
+        data: {breadcrumb: {label: 'Quantité des produits en stock', icon: 'chrome_reader_mode'}},
+        component: StockComponent
+      },
     ]
   },
   {path: '**', component: PageNotFoundComponent}
