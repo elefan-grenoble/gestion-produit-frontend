@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
     this.subscription = this.loadingService.getSubject().subscribe(
       (show: boolean) => {
-        if (show) this.showProgress(); else this.hideProgress();
+        if (show) { this.showProgress(); } else { this.hideProgress(); }
       }
     );
   }

@@ -8,17 +8,20 @@ import {HttpClientModule} from '@angular/common/http';
 import {ArticlesComponent} from './components/articles/articles.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MatButtonModule, MatDialogModule, MatIconModule,
-  MatInputModule,
-  MatPaginatorModule,
-  MatProgressBarModule, MatSnackBarModule,
-  MatTableModule, MatTooltipModule
-} from '@angular/material';
+import {MatInputModule } from '@angular/material/input';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import {SupplyingComponent} from "./components/supplying/supplying.component";
+import {SupplyingComponent} from './components/supplying/supplying.component';
 import { AddSupplyingDialogComponent } from './components/supplying/add-supplying-dialog/add-supplying-dialog.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddSupplyingButtonComponent } from './components/supplying/add-supplying-button/add-supplying-button.component';
@@ -34,8 +37,7 @@ import { AddTagPrintRequestsArticlesComponent } from './components/tag-print-req
 import { AddTagPrintRequestsDialogComponent } from './components/tag-print-requests/add-tag-print-requests-dialog/add-tag-print-requests-dialog.component';
 import { AddTagPrintRequestsButtonComponent } from './components/tag-print-requests/add-tag-print-requests-button/add-tag-print-requests-button.component';
 import { StockComponent } from './components/stock/stock.component';
-import {MatSelectModule} from "@angular/material/select";
-import {BarecodeScannerLivestreamModule} from 'ngx-barcode-scanner';
+import {BarcodeScannerLivestreamModule} from 'ngx-barcode-scanner';
 
 registerLocaleData(localeFr);
 
@@ -63,7 +65,7 @@ registerLocaleData(localeFr);
     StockComponent
   ],
   imports: [
-    BarecodeScannerLivestreamModule,
+    BarcodeScannerLivestreamModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

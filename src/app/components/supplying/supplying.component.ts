@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {SupplyingService} from "../../services/supplying.service";
-import {Supplying} from "../../models/supplying";
-import {DatePipe} from "@angular/common";
-import {Subscription, timer} from "rxjs";
-import {switchMap} from "rxjs/operators";
-import {MatSnackBar} from "@angular/material";
+import {SupplyingService} from '../../services/supplying.service';
+import {Supplying} from '../../models/supplying';
+import {DatePipe} from '@angular/common';
+import {Subscription, timer} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-supplying',
@@ -60,7 +60,7 @@ export class SupplyingComponent implements OnInit, OnDestroy {
     this.supplyingService.deleteSupplying(supplying, out_of_stock).subscribe(
       _ => {
         this.reload();
-        const snackRef = this.snackBar.open(message, "Annuler", {
+        const snackRef = this.snackBar.open(message, 'Annuler', {
           duration: 5000,
         });
         snackRef.afterDismissed().subscribe(info => {
@@ -74,13 +74,13 @@ export class SupplyingComponent implements OnInit, OnDestroy {
 
   supplied(supplying: Supplying) {
     supplying.supply_date = this.nowString();
-    this.deleteSupplying(supplying, "Article réapprovisioné", false);
+    this.deleteSupplying(supplying, 'Article réapprovisioné', false);
   }
 
   notSupplied(supplying: Supplying) {
     supplying.supply_date = this.nowString();
     supplying.out_of_stock = true;
-    this.deleteSupplying(supplying, "Article non trouvé", true);
+    this.deleteSupplying(supplying, 'Article non trouvé', true);
   }
 
 }
