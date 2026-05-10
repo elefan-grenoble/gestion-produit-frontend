@@ -20,8 +20,8 @@ Lancer `ng test` pour executer les tests avec [Karma](https://karma-runner.githu
 
 ### Création d'une release
 
-* Merger les développements dans la branche `develop` via une pull request.
-* Dans la branche `develop` lancer `ng build --prod` pour compiler le projet pour la prod. La destination des artefacts du build est le dossier `dist/`.
+* Merger les développements dans la branche `master` via une pull request.
+* Dans la branche `master` lancer `ng build --prod` pour compiler le projet pour la prod. La destination des artefacts du build est le dossier `dist/`.
 * Commiter et pousser les changements.
 * Créer un tag `git tag -a v1.4` avec la version correspondante et le pousser avec `git push origin <tag_name>`.
 
