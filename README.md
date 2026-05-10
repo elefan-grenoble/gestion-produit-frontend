@@ -20,17 +20,16 @@ Lancer `ng test` pour executer les tests avec [Karma](https://karma-runner.githu
 
 ### Création d'une release
 
-* Merger les développements dans la branche `master` via une pull request.
-* Dans la branche `master` lancer `ng build --prod` pour compiler le projet pour la prod. La destination des artefacts du build est le dossier `dist/`.
-* Commiter et pousser les changements.
-* Créer un tag `git tag -a v1.4` avec la version correspondante et le pousser avec `git push origin <tag_name>`.
+On a `release-please`, qui s'occupera de crér une PR de release. Il faudra la merger pour que la release soit créée.
 
 ### Deploiement de la release en production
 
-TODO
- 
-
-
+```bash
+git checkout master && git pull
+git checkout vX.Y.Z  # tag créé par release-please
+npm ci
+npx ng build --prod
+```
 
 ## Plus d'aide
 
