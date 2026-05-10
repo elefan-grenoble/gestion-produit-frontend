@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {SessionService} from '../services/session.service';
+import {environment} from '../../environments/environment';
 
 export interface UserStatus {
   logged: boolean;
@@ -27,6 +28,22 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    if (environment.authBypass) {
+      const userStatus: UserStatus = {
+        logged: true,
+        oauth_url: '/api/connect/custom',
+        disconnect_url: '/api/logout',
+        logout_page_url: location.origin,
+        vip_ip: true,
+        user: {
+          username: 'dev.local'
+        }
+      };
+
+      this.sessionService.updateUserStatus(userStatus);
+      return of(true);
+    }
+
     return this.http.get<UserStatus>('/api/user/status').pipe(map(
       (userStatus: UserStatus) => {
         if (userStatus.logged) {
