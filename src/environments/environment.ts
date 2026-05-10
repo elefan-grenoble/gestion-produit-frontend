@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  barcodeScanner: true
+  barcodeScanner: true,
+  authBypass: true
 };
 
 /*
