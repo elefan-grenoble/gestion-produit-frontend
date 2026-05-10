@@ -16,8 +16,10 @@ $hover-color: #27ABD9;
       margin-top: 20px;
 
       .menu-item {
+        display: block;
         margin: auto;
         cursor: pointer;
+        text-decoration: none;
         color: $main-color;
         max-width: 200px;
         border: $main-color 2px solid;
