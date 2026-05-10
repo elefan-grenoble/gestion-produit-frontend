@@ -1,14 +1,14 @@
 <div class="home-container">
   <nav class="menu">
     <div *ngFor="let menuItem of menuItems" class="menu-item-container">
-      <div class="menu-item" [routerLink]="menuItem.url">
+      <a class="menu-item" [routerLink]="menuItem.url">
         <div class="menu-item-title">{{menuItem.label}}</div>
         <div class="menu-item-icon-container">
           <div class="menu-item-icon">
             <mat-icon>{{menuItem.icon}}</mat-icon>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </nav>
 </div>
