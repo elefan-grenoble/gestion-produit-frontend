@@ -57,7 +57,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
         break;
       }
       case 'barcodes': {
-        this.actionColumnTitle = 'Ajouter un code barre';
+        this.actionColumnTitle = 'Ajouter un code-barres';
         this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];
         break;
       }

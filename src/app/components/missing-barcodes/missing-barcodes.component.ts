@@ -59,7 +59,7 @@ export class MissingBarcodesComponent implements OnInit {
       _ => {
         this.loadingService.taskFinished();
         this.barcodes = this.barcodes.filter(b => b.id !== barcode.id);
-        const snackRef = this.snackBar.open('Code barre supprimé', 'Annuler', {
+        const snackRef = this.snackBar.open('Code-barres supprimé', 'Annuler', {
           duration: 5000,
         });
         snackRef.afterDismissed().subscribe(info => {
