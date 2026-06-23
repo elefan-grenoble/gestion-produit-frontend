@@ -15,6 +15,11 @@ export class HomeComponent implements OnInit {
 
   menuItems: MenuItem[] = [
     {
+      url: '/list',
+      label: 'Tous les produits',
+      icon: 'view_list'
+    },
+    {
       url: '/supplying',
       label: 'Gérer le réapprovisionnement',
       icon: 'add_shopping_cart'

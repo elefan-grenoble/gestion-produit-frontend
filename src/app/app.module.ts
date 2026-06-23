@@ -37,6 +37,7 @@ import { AddTagPrintRequestsArticlesComponent } from './components/tag-print-req
 import { AddTagPrintRequestsDialogComponent } from './components/tag-print-requests/add-tag-print-requests-dialog/add-tag-print-requests-dialog.component';
 import { AddTagPrintRequestsButtonComponent } from './components/tag-print-requests/add-tag-print-requests-button/add-tag-print-requests-button.component';
 import { StockComponent } from './components/stock/stock.component';
+import { ListComponent } from './components/list/list.component';
 import {BarcodeScannerLivestreamModule} from 'ngx-barcode-scanner';
 
 registerLocaleData(localeFr);
@@ -62,7 +63,8 @@ registerLocaleData(localeFr);
     AddTagPrintRequestsArticlesComponent,
     AddTagPrintRequestsDialogComponent,
     AddTagPrintRequestsButtonComponent,
-    StockComponent
+    StockComponent,
+    ListComponent
   ],
   imports: [
     BarcodeScannerLivestreamModule,
