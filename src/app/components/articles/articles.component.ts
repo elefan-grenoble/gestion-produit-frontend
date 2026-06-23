@@ -53,7 +53,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
         break;
       }
       case 'delivery': {
-        this.displayedColumns = ['designation', 'emplacement', 'rayon'];
+        this.displayedColumns = ['designation', 'rayon', 'emplacement'];
         break;
       }
       case 'barcodes': {
