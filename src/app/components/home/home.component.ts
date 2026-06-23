@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   menuItems: MenuItem[] = [
     {
       url: '/supplying',
-      label: 'Gérer le réapprovisonnement',
+      label: 'Gérer le réapprovisionnement',
       icon: 'add_shopping_cart'
     },
     {
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     },
     {
       url: '/missing-barcodes',
-      label: 'Signaler un code barre manquant',
+      label: 'Signaler un code-barres manquant',
       icon: 'playlist_add'
     },
     {

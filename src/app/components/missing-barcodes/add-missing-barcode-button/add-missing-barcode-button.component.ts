@@ -32,7 +32,7 @@ export class AddMissingBarcodeButtonComponent implements OnInit {
       if (barcode) {
         this.barcodeService.addMissingBarcode(this.article.code, barcode).subscribe(
           _ => {
-            this.snackBar.open('Code barre ajouté, en attente de traitement', 'ok', {
+            this.snackBar.open('Code-barres ajouté, en attente de traitement', 'ok', {
               duration: 5000,
             });
           },
