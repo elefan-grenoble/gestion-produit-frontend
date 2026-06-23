@@ -18,7 +18,10 @@ export class HomeComponent implements OnInit {
       url: '/list',
       label: 'Tous les produits',
       icon: 'view_list'
-    },
+    }
+  ];
+
+  menuItemsOther: MenuItem[] = [
     {
       url: '/supplying',
       label: 'Gérer le réapprovisionnement',
