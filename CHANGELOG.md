@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/elefan-grenoble/gestion-produit-frontend/compare/v1.2.1...v1.3.0) (2026-06-24)
+
+
+### Nouveautés
+
+* nouvelle page avec tous les produits ([#50](https://github.com/elefan-grenoble/gestion-produit-frontend/issues/50)) ([7a45bbc](https://github.com/elefan-grenoble/gestion-produit-frontend/commit/7a45bbc344a769fce9dabb124f9d9bb67cc76d60))
+
+
+### Technique
+
+* petits ajustements de wording (code-barres, actuellement en stock) ([#49](https://github.com/elefan-grenoble/gestion-produit-frontend/issues/49)) ([28f8e8f](https://github.com/elefan-grenoble/gestion-produit-frontend/commit/28f8e8ff6893cec3e500bf9539058146d8dd430c))
+
 ## [1.2.1](https://github.com/elefan-grenoble/gestion-produit-frontend/compare/v1.2.0...v1.2.1) (2026-05-10)
 
 
