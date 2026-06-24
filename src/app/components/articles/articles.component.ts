@@ -47,6 +47,10 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.loadArticles();
     switch (this.feature) {
+      case 'list': {
+        this.displayedColumns = ['designation', 'rayon', 'emplacement', 'qte_stock', 'qte_commande'];
+        break;
+      }
       case 'supplying': {
         this.actionColumnTitle = 'Ajouter';
         this.displayedColumns = ['designation', 'famille', 'prix_vente', 'actions'];

@@ -11,11 +11,19 @@ import {AddMissingBarcodeArticlesComponent} from './components/missing-barcodes/
 import {TagPrintRequestsComponent} from './components/tag-print-requests/tag-print-requests.component';
 import {AddTagPrintRequestsArticlesComponent} from './components/tag-print-requests/add-tag-print-requests-articles/add-tag-print-requests-articles.component';
 import {StockComponent} from './components/stock/stock.component';
+import { ListComponent } from './components/list/list.component';
 
 const routes: Routes = [
   {
     path: '', canActivate: [AuthGuard], data: {breadcrumb: {label: 'Accueil', icon: 'home'}}, children: [
       {path: '', component: HomeComponent},
+      {
+        path: 'list',
+        data: {breadcrumb: {label: 'Tous les produits', icon: 'view_list'}},
+        children: [
+          {path: '', component: ListComponent}
+        ]
+      },
       {
         path: 'supplying',
         data: {breadcrumb: {label: 'Produits à réapprovisionner', icon: 'add_shopping_cart'}},
