@@ -28,7 +28,8 @@ On a `release-please`, qui s'occupera de crér une PR de release. Il faudra la m
 git checkout master && git pull
 git checkout vX.Y.Z  # tag créé par release-please
 npm ci
-npx ng build --prod
+npm run build
+# NODE_OPTIONS=--openssl-legacy-provider npx ng build (en fonction de la version de node)
 ```
 
 ## Plus d'aide
