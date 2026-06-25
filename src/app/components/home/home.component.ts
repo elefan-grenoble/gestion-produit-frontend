@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ArticlesService} from '../../services/articles.service';
 
 export interface MenuItem {
   url: string;
@@ -49,10 +50,12 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(private articleService: ArticlesService) {
   }
 
   ngOnInit() {
+    // Preload articles in the background
+    this.articleService.getArticles().subscribe();
   }
 
 }
