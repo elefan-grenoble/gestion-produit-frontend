@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/elefan-grenoble/gestion-produit-frontend/compare/v1.3.0...v1.4.0) (2026-06-25)
+
+
+### Nouveautés
+
+* récupérer les produits dès le chargement. Et les garder en cache pour éviter trop d'appels API ([#52](https://github.com/elefan-grenoble/gestion-produit-frontend/issues/52)) ([ea6c9e4](https://github.com/elefan-grenoble/gestion-produit-frontend/commit/ea6c9e46a8cc08308fd5469a8c643abc182fcce9))
+
+
+### Documentation
+
+* mise à jour du README (branche master, déploiement) ([#48](https://github.com/elefan-grenoble/gestion-produit-frontend/issues/48)) ([0f39196](https://github.com/elefan-grenoble/gestion-produit-frontend/commit/0f39196bbff78968086a5142c0263c57a4116887))
+
 ## [1.3.0](https://github.com/elefan-grenoble/gestion-produit-frontend/compare/v1.2.1...v1.3.0) (2026-06-24)
 
 
