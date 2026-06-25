@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {tap, shareReplay} from 'rxjs/operators';
 import {Article} from '../models/article';
 
 @Injectable({
@@ -19,11 +19,14 @@ export class ArticlesService {
       return of(this.articlesCache);
     }
 
-    // Otherwise fetch from API
+    // Otherwise fetch from API - share the request among multiple subscribers
     return this.http.get<Article[]>('/api/articles').pipe(
       tap(articles => {
-        this.articlesCache = articles;  // Store in cache
-      })
+        // Store in cache
+        this.articlesCache = articles;
+      }),
+      // Share the same request if multiple subscribers
+      shareReplay(1)
     );
   }
 
@@ -32,7 +35,8 @@ export class ArticlesService {
   }
 
   refreshArticles(): Observable<Article[]> {
-    this.articlesCache = null;  // Clear cache
+    // Clear cache and fetch fresh articles from API
+    this.articlesCache = null;
     return this.getArticles();
   }
 
