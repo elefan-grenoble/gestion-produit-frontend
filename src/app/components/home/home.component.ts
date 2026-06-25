@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ArticlesService} from '../../services/articles.service';
+import {LoadingService} from '../../services/loading.service';
 
 export interface MenuItem {
   url: string;
@@ -49,10 +51,21 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(private articleService: ArticlesService, private loadingService: LoadingService) {
   }
 
   ngOnInit() {
+    // Preload articles in the background
+    this.loadingService.taskStarted();
+    this.articleService.getArticles().subscribe(
+      () => {
+        this.loadingService.taskFinished();
+      },
+      err => {
+        console.error(err);
+        this.loadingService.taskFinished();
+      }
+    );
   }
 
 }
