@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePipe, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -82,6 +83,7 @@ registerLocaleData(localeFr);
     MatIconModule,
     MatTooltipModule,
     MatSnackBarModule,
+    MatCheckboxModule,
     FormsModule,
     MatSelectModule
   ],
