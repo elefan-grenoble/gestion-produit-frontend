@@ -16,8 +16,10 @@
     <ng-container matColumnDef="designation">
       <th mat-header-cell *matHeaderCellDef> Désignation - Fournisseur</th>
       <td mat-cell *matCellDef="let article">
-        <span>{{article.designation}}</span><br><span
-        class="fournisseur">{{article.fournisseur.nom.toLowerCase()}}</span>
+        <span>{{article.designation}}</span>
+        <span *ngIf="article.status === 'EN SOMMEIL'" title="En sommeil">&nbsp;💤</span>
+        <br />
+        <span class="fournisseur">{{article.fournisseur.nom.toLowerCase()}}</span>
       </td>
     </ng-container>
 
