@@ -31,6 +31,8 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   @ViewChild(BarcodeScannerLivestreamComponent, {static: true})
   barecodeScanner: BarcodeScannerLivestreamComponent;
   cameraAvailable = false;
+  hideSommeil = false;
+  articles: Article[] = [];
 
   dataSource: MatTableDataSource<Article>;
 
@@ -84,6 +86,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     this.loadingService.taskStarted();
     this.articleService.getArticles().subscribe(
       (articles: Article[]) => {
+        this.articles = articles;
         this.dataSource = new MatTableDataSource(articles);
         this.dataSource.paginator = this.paginator;
         this.dataSource.paginator.firstPage();
@@ -104,14 +107,34 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    let filteredData = this.articles;
+
+    // first filter on non-text criterias
+    if (this.hideSommeil) {
+      filteredData = filteredData.filter(article => article.status !== 'EN SOMMEIL');
+    }
+    this.dataSource.data = filteredData;
+
+    // then filter on text criterias (using the filterPredicate)
+    if (filterValue) {
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    } else {
+      this.dataSource.filter = '';
+    }
+
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
 
+  onSommeilFilterChange(event: any) {
+    this.hideSommeil = event.checked;
+    this.applyFilter(this.dataSource.filter);
+  }
+
   resetFilter() {
     this.searchInput.value = '';
+    this.hideSommeil = false;
     this.applyFilter('');
     this.searchInput.focus();
   }
