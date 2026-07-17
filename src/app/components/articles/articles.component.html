@@ -6,7 +6,7 @@
              placeholder="Recherche (code-barres, désignation ou fournisseur)">
     </mat-form-field>
     <mat-checkbox [checked]="hideSommeil" (change)="onSommeilFilterChange($event)" style="margin-left: 10px;">
-      Masquer 💤
+      <span title="Masquer 'En sommeil'">Masquer&nbsp;💤</span>
     </mat-checkbox>
     <button mat-raised-button (click)="resetFilter()"><mat-icon>clear</mat-icon>Effacer</button>
     <button *ngIf="cameraAvailable" mat-raised-button (click)="scanBarCode()"><mat-icon>camera</mat-icon>{{ barecodeScanner.isStarted() === true ? 'Arrêter' : 'Scanner' }}</button>
