@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/elefan-grenoble/gestion-produit-frontend/compare/v1.4.0...v1.5.0) (2026-10-06)
+
+
+### Nouveautés
+
+* **Articles:** afficher ceux en sommeil. pouvoir les exclure ([#54](https://github.com/elefan-grenoble/gestion-produit-frontend/issues/54)) ([6efd733](https://github.com/elefan-grenoble/gestion-produit-frontend/commit/6efd733a6a5806099bc9bafe206cfec3f84960b6))
+
+
+### Technique
+
+* **Page Liste:** ajouter la colonne prix ([#56](https://github.com/elefan-grenoble/gestion-produit-frontend/issues/56)) ([6d9c9c5](https://github.com/elefan-grenoble/gestion-produit-frontend/commit/6d9c9c5a5d0c10435837a329f742c9b51d7b5ae5))
+
 ## [1.4.0](https://github.com/elefan-grenoble/gestion-produit-frontend/compare/v1.3.0...v1.4.0) (2026-06-25)
 
 
