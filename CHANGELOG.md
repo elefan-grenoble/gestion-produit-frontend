@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/elefan-grenoble/gestion-produit-frontend/compare/v1.5.0...v1.6.0) (2026-10-06)
+
+
+### Nouveautés
+
+* **Accueil:** cacher 2 pages qui sont devenues doublons/obsolètes ([#57](https://github.com/elefan-grenoble/gestion-produit-frontend/issues/57)) ([1ecdb9f](https://github.com/elefan-grenoble/gestion-produit-frontend/commit/1ecdb9f46dbdb9a4012a602ceb6557b9ed5e16a9))
+
 ## [1.5.0](https://github.com/elefan-grenoble/gestion-produit-frontend/compare/v1.4.0...v1.5.0) (2026-10-06)
 
 
