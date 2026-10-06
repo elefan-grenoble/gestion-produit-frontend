@@ -6,6 +6,7 @@ export interface MenuItem {
   url: string;
   label: string;
   icon: string;
+  hidden?: boolean;
 }
 
 @Component({
@@ -32,7 +33,8 @@ export class HomeComponent implements OnInit {
     {
       url: '/delivery',
       label: 'Emplacements des stocks',
-      icon: 'gps_fixed'
+      icon: 'gps_fixed',
+      hidden: true  // remplacé par la page "Tous les produits"
     },
     {
       url: '/missing-barcodes',
@@ -47,7 +49,8 @@ export class HomeComponent implements OnInit {
     {
       url: '/stock',
       label: 'Consulter la quantité de produits en stock',
-      icon: 'chrome_reader_mode'
+      icon: 'chrome_reader_mode',
+      hidden: true  // remplacé par la page "Tous les produits"
     }
   ];
 
