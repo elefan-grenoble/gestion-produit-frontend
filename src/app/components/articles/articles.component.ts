@@ -50,7 +50,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     this.loadArticles();
     switch (this.feature) {
       case 'list': {
-        this.displayedColumns = ['designation', 'rayon', 'emplacement', 'qte_stock', 'qte_commande'];
+        this.displayedColumns = ['designation', 'rayon', 'emplacement', 'qte_stock', 'qte_commande', 'prix_vente'];
         break;
       }
       case 'supplying': {
