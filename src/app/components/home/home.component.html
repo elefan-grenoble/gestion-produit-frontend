@@ -1,31 +1,35 @@
 <div class="home-container">
 
   <nav class="menu">
-    <div *ngFor="let menuItem of menuItems" class="menu-item-container">
-      <a class="menu-item" [routerLink]="menuItem.url">
-        <div class="menu-item-title">{{menuItem.label}}</div>
-        <div class="menu-item-icon-container">
-          <div class="menu-item-icon">
-            <mat-icon>{{menuItem.icon}}</mat-icon>
+    <ng-container *ngFor="let menuItem of menuItems">
+      <div *ngIf="!menuItem.hidden" class="menu-item-container">
+        <a class="menu-item" [routerLink]="menuItem.url">
+          <div class="menu-item-title">{{menuItem.label}}</div>
+          <div class="menu-item-icon-container">
+            <div class="menu-item-icon">
+              <mat-icon>{{menuItem.icon}}</mat-icon>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
+    </ng-container>
   </nav>
 
   <br />
   <br />
 
   <nav class="menu">
-    <div *ngFor="let menuItem of menuItemsOther" class="menu-item-container">
-      <a class="menu-item" [routerLink]="menuItem.url">
-        <div class="menu-item-title">{{menuItem.label}}</div>
-        <div class="menu-item-icon-container">
-          <div class="menu-item-icon">
-            <mat-icon>{{menuItem.icon}}</mat-icon>
+    <ng-container *ngFor="let menuItem of menuItemsOther">
+      <div *ngIf="!menuItem.hidden" class="menu-item-container">
+        <a class="menu-item" [routerLink]="menuItem.url">
+          <div class="menu-item-title">{{menuItem.label}}</div>
+          <div class="menu-item-icon-container">
+            <div class="menu-item-icon">
+              <mat-icon>{{menuItem.icon}}</mat-icon>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
+    </ng-container>
   </nav>
 </div>
